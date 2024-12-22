@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::group(
     [
@@ -45,9 +46,7 @@ Route::group(
     function ()
     {
     // Dashboard Route
-    Route::get('dashboard', function() {
-        return view('admin.dashboard.index');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
