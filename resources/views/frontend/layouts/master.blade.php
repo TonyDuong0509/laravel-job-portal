@@ -14,13 +14,17 @@
     <meta name="author" content="">
     <title>JobList - Homepage</title>
 
+    @notifyCss
     <link rel="shortcut icon" type="image/x-icon" href="">
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
+
 </head>
 
 <body>
-
 {{--<div id="preloader-active">--}}
 {{--    <div class="preloader d-flex align-items-center justify-content-center">--}}
 {{--        <div class="preloader-inner position-relative">--}}
@@ -80,6 +84,15 @@
 <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+<x-notify::notify/>
+@notifyJs
+
+<script>
+    $('.datepicker').datepicker();
+</script>
+
 </body>
 
 </html>

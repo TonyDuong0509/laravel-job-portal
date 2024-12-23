@@ -2,10 +2,10 @@
     <div class="box-nav-tabs nav-tavs-profile mb-5">
         <ul class="nav" role="tablist">
             <li><a class="btn btn-border mb-20 active"
-                   href="candidate-profile-dashboard.html">Dashboard</a></li>
-            <li><a class="btn btn-border mb-20" href="">My Profile</a></li>
-            <li><a class="btn btn-border mb-20" href="candidate-profile-jobs.html">My Jobs</a></li>
-            <li><a class="btn btn-border mb-20" href="candidate-profile-save-jobs.html">Saved Jobs</a>
+                   href="#">Dashboard</a></li>
+            <li><a class="btn btn-border mb-20" href="{{ route('company.profile') }}">My Profile</a></li>
+            <li><a class="btn btn-border mb-20" href="">My Jobs</a></li>
+            <li><a class="btn btn-border mb-20" href="">Saved Jobs</a>
             </li>
             <li>
                 <form method="POST"

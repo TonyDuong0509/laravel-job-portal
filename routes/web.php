@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CompanyDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,15 +37,20 @@ Route::group([
         Route::get('/dashboard', [CandidateDashboardController::class, 'index'])->name('dashboard');
     });
 
+// ***************************************************************************************************************
+
 Route::group([
     'middleware' => ['auth', 'verified', 'user.role:company'],
     'prefix' => 'company',
     'as' => 'company.',
 ],
     function () {
-        Route::get('/dashboard', function () {
-            return view('frontend.company-dashboard.dashboard');
-        })->name('dashboard');
+        // Dashboard
+        Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
+
+        // Profile
+        Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
+        Route::post('/profile', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
     });
 
 
