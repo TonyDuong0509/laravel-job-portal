@@ -6,7 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IndustryType extends Model
+class OrganizationType extends Model
 {
     use HasFactory;
     use Sluggable;

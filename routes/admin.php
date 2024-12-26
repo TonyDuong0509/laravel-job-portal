@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\OrganizationTypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 
@@ -52,5 +53,8 @@ Route::group(
 
         // Industry Route
         Route::resource('industry-types', IndustryTypeController::class);
+
+        // Organization Route
+        Route::resource('organization-types', OrganizationTypeController::class);
     });
 
