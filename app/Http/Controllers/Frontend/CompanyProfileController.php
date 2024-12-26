@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\UpdateCompanyFoundingInfoRequest;
 use App\Http\Requests\Frontend\UpdateCompanyInfoRequest;
 use App\Models\Company;
+use App\Services\Notify;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class CompanyProfileController extends Controller
             'user_id' => Auth::user()->id
         ], $data);
 
-        notify()->success('️Updated successfully', '👍 Success !');
+        Notify::createdNotification();
 
         return redirect()->back();
     }
@@ -66,7 +67,7 @@ class CompanyProfileController extends Controller
             ]
         );
 
-        notify()->success('️Updated Company Info successfully', '👍 Success !');
+        Notify::createdNotification();
 
         return redirect()->back();
     }
@@ -79,7 +80,7 @@ class CompanyProfileController extends Controller
         ]);
         Auth::user()->update($validatedData);
 
-        notify()->success('️Updated Founding Info successfully', '👍 Success !');
+        Notify::createdNotification();
 
         return redirect()->back();
     }
@@ -94,7 +95,7 @@ class CompanyProfileController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        notify()->success('️Updated Password successfully', '👍 Success !');
+        Notify::updatedNotification();
 
         return redirect()->back();
     }

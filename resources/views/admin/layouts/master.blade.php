@@ -5,6 +5,8 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Admin Dashboard</title>
 
+    @notifyCss
+
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
@@ -52,9 +54,48 @@
 
 <!-- JS Libraies -->
 <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
+<script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+
+<x-notify::notify/>
+@notifyJs
 
 <!-- Template JS File -->
 <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
 <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+<script>
+    $(".delete-item").on('click', function (event) {
+        event.preventDefault();
+
+        swal({
+            title: 'Are you sure?',
+            text: 'Once deleted, you will not be able to recover this imaginary file!',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    let url = $(this).attr('href');
+                    $.ajax({
+                        method: 'DELETE',
+                        url: url,
+                        data: {_token: "{{ csrf_token() }}"},
+                        success: function (response) {
+                            window.location.reload();
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(error);
+                            swal(xhr.responseJSON.message, {
+                                icon: 'error',
+                            });
+                        }
+                    });
+                }
+            });
+    });
+</script>
+
 </body>
 </html>
