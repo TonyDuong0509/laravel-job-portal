@@ -1,17 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
-use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\CityController;
 
 Route::group(
     [
@@ -56,5 +55,16 @@ Route::group(
 
         // Organization Route
         Route::resource('organization-types', OrganizationTypeController::class);
+
+        // Country Route
+        Route::resource('countries', CountryController::class);
+
+        // State Route
+        Route::resource('states', StateController::class);
+
+        // City Route
+        Route::resource('cities', CityController::class);
+
+        Route::get('get-states/{country_id}', [LocationController::class, 'getStatesOfCountry'])->name('get-states');
     });
 

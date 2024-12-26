@@ -13,6 +13,7 @@
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/modules/select2/dist/css/select2.min.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
@@ -55,6 +56,7 @@
 <!-- JS Libraies -->
 <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
 <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
 
 <x-notify::notify/>
 @notifyJs
@@ -62,6 +64,8 @@
 <!-- Template JS File -->
 <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
 <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+@stack('scripts')
 
 <script>
     $(".delete-item").on('click', function (event) {
