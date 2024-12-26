@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -49,8 +50,14 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         if (Auth::user()->role === 'company') {
+            Company::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'slug' => str_replace(' ', '-', strtolower($user->name)),
+            ]);
             return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
         } elseif (Auth::user()->role === 'candidate') {
+            // Handle create candidate
             return redirect(RouteServiceProvider::CANDIDATE_DASHBOARD);
         }
         return redirect('/');

@@ -90,7 +90,9 @@
 @notifyJs
 
 <script>
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({
+        format: 'yyyy-m-d'
+    });
 </script>
 
 </body>

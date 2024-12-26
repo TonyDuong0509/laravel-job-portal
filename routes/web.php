@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+/** Candidate Routes */
 Route::group([
     'middleware' => ['auth', 'verified', 'user.role:candidate'],
     'prefix' => 'candidate',
@@ -39,6 +40,7 @@ Route::group([
 
 // ***************************************************************************************************************
 
+/** Company Routes */
 Route::group([
     'middleware' => ['auth', 'verified', 'user.role:company'],
     'prefix' => 'company',
@@ -51,6 +53,9 @@ Route::group([
         // Profile
         Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
         Route::post('/profile', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
+        Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');
+        Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
+        Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
     });
 
 
