@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\CityController;
 
 Route::group(
@@ -35,7 +38,8 @@ Route::group(
 
         Route::post('reset-password', [NewPasswordController::class, 'store'])
             ->name('password.store');
-    });
+    }
+);
 
 Route::group(
     [
@@ -64,7 +68,15 @@ Route::group(
 
         // City Route
         Route::resource('cities', CityController::class);
-
         Route::get('get-states/{country_id}', [LocationController::class, 'getStatesOfCountry'])->name('get-states');
-    });
 
+        // Language Route
+        Route::resource('languages', LanguageController::class);
+
+        // Profession Route
+        Route::resource('professions', ProfessionController::class);
+
+        // Skill Route
+        Route::resource('skills', SkillController::class);
+    }
+);

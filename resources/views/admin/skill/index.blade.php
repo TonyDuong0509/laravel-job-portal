@@ -3,16 +3,16 @@
 @section('contents')
     <section class="section">
         <div class="section-header">
-            <h1>Industry Type</h1>
+            <h1>Skills</h1>
         </div>
 
         <div class="section-body">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>All Industry Types</h4>
+                        <h4>All Skills</h4>
                         <div class="card-header-form">
-                            <form action="{{ route('admin.industry-types.index') }}" method="GET">
+                            <form action="{{ route('admin.skills.index') }}" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" name="search"
                                         value="{{ request('search') }}">
@@ -23,7 +23,7 @@
                                 </div>
                             </form>
                         </div>
-                        <a class="btn btn-primary ml-2" href="{{ route('admin.industry-types.create') }}">
+                        <a class="btn btn-primary ml-2" href="{{ route('admin.skills.create') }}">
                             <i class="fas fa-plus-circle"> Create New</i>
                         </a>
                     </div>
@@ -36,18 +36,18 @@
                                     <th>Action</th>
                                 </tr>
                                 <tbody>
-                                    @forelse ($industryTypes as $type)
+                                    @forelse ($skills as $skill)
                                         <tr>
                                             <td>
-                                                {{ $type->name }}
+                                                {{ $skill->name }}
                                             </td>
                                             <td>
-                                                {{ $type->slug }}
+                                                {{ $skill->slug }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.industry-types.edit', $type->id) }}"
+                                                <a href="{{ route('admin.skills.edit', $skill->id) }}"
                                                     class="btn btn-warning">Edit</a>
-                                                <a href="{{ route('admin.industry-types.destroy', $type->id) }}"
+                                                <a href="{{ route('admin.skills.destroy', $skill->id) }}"
                                                     class="btn btn-danger delete-item">Delete</a>
                                             </td>
                                         </tr>
@@ -62,8 +62,8 @@
                     </div>
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
-                            @if ($industryTypes->hasPages())
-                                {{ $industryTypes->withQueryString()->links() }}
+                            @if ($skills->hasPages())
+                                {{ $skills->withQueryString()->links() }}
                             @endif
                         </nav>
                     </div>

@@ -15,7 +15,7 @@
                             <form action="{{ route('admin.organization-types.index') }}" method="GET">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search" name="search"
-                                           value="{{ request('search') }}">
+                                        value="{{ request('search') }}">
                                     <div class="input-group-btn">
                                         <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i>
                                         </button>
@@ -36,29 +36,33 @@
                                     <th>Action</th>
                                 </tr>
                                 <tbody>
-                                @foreach($organizationTypes as $type)
-                                    <tr>
-                                        <td>
-                                            {{ $type->name }}
-                                        </td>
-                                        <td>
-                                            {{ $type->slug }}
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('admin.organization-types.edit', $type->id) }}"
-                                               class="btn btn-warning">Edit</a>
-                                            <a href="{{ route('admin.organization-types.destroy', $type->id) }}"
-                                               class="btn btn-danger delete-item">Delete</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @forelse ($organizationTypes as $type)
+                                        <tr>
+                                            <td>
+                                                {{ $type->name }}
+                                            </td>
+                                            <td>
+                                                {{ $type->slug }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.organization-types.edit', $type->id) }}"
+                                                    class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.organization-types.destroy', $type->id) }}"
+                                                    class="btn btn-danger delete-item">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="text-center">No result found !</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="card-footer text-right">
                         <nav class="d-inline-block">
-                            @if($organizationTypes->hasPages())
+                            @if ($organizationTypes->hasPages())
                                 {{ $organizationTypes->withQueryString()->links() }}
                             @endif
                         </nav>

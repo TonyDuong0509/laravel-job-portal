@@ -8,8 +8,7 @@
     </form>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                     class="nav-link nav-link-lg message-toggle beep"><i
-                    class="far fa-envelope"></i></a>
+                class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
                     <div class="float-right">
@@ -35,8 +34,7 @@
             </div>
         </li>
         <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                                                     class="nav-link notification-toggle nav-link-lg beep"><i
-                    class="far fa-bell"></i></a>
+                class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifications
                     <div class="float-right">
@@ -60,7 +58,7 @@
             </div>
         </li>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
-                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
             </a>
@@ -74,9 +72,10 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <form method="POST"
-                      action="{{ Auth::guard('admin')->check() ? route('admin.logout') : route('logout') }}">
+                    action="{{ Auth::guard('admin')->check() ? route('admin.logout') : route('logout') }}">
                     @csrf
-                    <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();
+                    <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger"
+                        onclick="event.preventDefault();
                                             this.closest('form').submit();">>
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
@@ -96,36 +95,49 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.dashboard' ]) }}">
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.dashboard']) }}">
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
                         class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Starter</li>
 
-            <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*' ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Attributes</span></a>
+            <li
+                class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Attributes</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.industry-types.*']) }}"><a class="nav-link"
-                                                                                                   href="{{ route('admin.industry-types.index') }}">Industry
+                            href="{{ route('admin.industry-types.index') }}">Industry
                             Type</a></li>
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.organization-types.*']) }}"><a class="nav-link"
-                                                                                                       href="{{ route('admin.organization-types.index') }}">Organization
+                            href="{{ route('admin.organization-types.index') }}">Organization
                             Type</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.languages.index') }}">Languages</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.professions.index') }}">Professions</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.skills.index') }}">Skills</a>
                     </li>
                 </ul>
             </li>
 
-            <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.countries.*', 'admin.states.*', 'admin.cities.*' ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Locations</span></a>
+            <li
+                class="dropdown {{ \App\Helpers\setSidebarActive(['admin.countries.*', 'admin.states.*', 'admin.cities.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i> <span>Locations</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.countries.*']) }}"><a class="nav-link"
-                                                                                              href="{{ route('admin.countries.index') }}">Countries</a>
+                            href="{{ route('admin.countries.index') }}">Countries</a>
                     </li>
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.states.*']) }}"><a class="nav-link"
-                                                                                           href="{{ route('admin.states.index') }}">States</a>
+                            href="{{ route('admin.states.index') }}">States</a>
                     </li>
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.cities.*']) }}"><a class="nav-link"
-                                                                                           href="{{ route('admin.cities.index') }}">Cities</a>
+                            href="{{ route('admin.cities.index') }}">Cities</a>
                     </li>
                 </ul>
             </li>
