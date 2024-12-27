@@ -86,6 +86,8 @@
 <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
 
+@stack('scripts')
+
 <x-notify::notify/>
 @notifyJs
 
@@ -94,6 +96,7 @@
         format: 'yyyy-m-d'
     });
 </script>
+
 
 </body>
 

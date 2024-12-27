@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+Route::get('get-states/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
+Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
 
 /** Candidate Routes */
 Route::group([
@@ -50,7 +54,7 @@ Route::group([
         // Dashboard
         Route::get('/dashboard', [CompanyDashboardController::class, 'index'])->name('dashboard');
 
-        // Profile
+        // Company Profile
         Route::get('/profile', [CompanyProfileController::class, 'index'])->name('profile');
         Route::post('/profile', [CompanyProfileController::class, 'updateCompanyInfo'])->name('profile.company-info');
         Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');

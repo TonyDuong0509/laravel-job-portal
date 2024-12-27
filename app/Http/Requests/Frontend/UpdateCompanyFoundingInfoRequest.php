@@ -14,16 +14,16 @@ class UpdateCompanyFoundingInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'industry_type' => ['required', 'integer'],
-            'organization_type' => ['required', 'integer'],
-            'team_size' => ['required', 'integer'],
+            'industry_type_id' => ['required', 'integer'],
+            'organization_type_id' => ['required', 'integer'],
+            'team_size_id' => ['required', 'integer'],
             'establishment_date' => ['required', 'date'],
             'website' => ['required', 'active_url'],
             'email' => ['required', 'email'],
             'phone' => ['required'],
-            'country' => ['integer', 'max:100'],
-            'state' => ['integer', 'max:100'],
-            'city' => ['integer', 'max:100'],
+            'country' => ['integer', 'nullable'],
+            'state' => ['integer', 'nullable'],
+            'city' => ['integer', 'nullable'],
             'address' => ['string', 'max:255'],
             'map_link' => ['nullable'],
         ];

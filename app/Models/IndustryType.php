@@ -11,7 +11,7 @@ class IndustryType extends Model
     use HasFactory;
     use Sluggable;
 
-    protected $fillable = ['name', 'slug'];
+    protected $fillable = ['name'];
 
     public function sluggable(): array
     {

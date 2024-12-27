@@ -54,7 +54,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <x-image-preview :height="200" :width="200" :source="$companyInfo->logo"/>
+                                        <x-image-preview :height="200" :width="200" :source="$companyInfo?->logo"/>
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Logo *</label>
                                             <input class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
@@ -63,7 +63,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <x-image-preview :height="200" :width="500" :source="$companyInfo->banner"/>
+                                        <x-image-preview :height="200" :width="500" :source="$companyInfo?->banner"/>
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Banner *</label>
                                             <input class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}"
@@ -117,7 +117,12 @@
                                             <select name="industry_type_id" id=""
                                                     class="form-control form-icons select-active {{ $errors->has('industry_type') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($industryTypes as $industryType)
+                                                    <option
+                                                        @selected($industryType->id === $companyInfo?->industry_type_id) value="{{ $industryType->id }}">
+                                                        {{ $industryType->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('industry_type')" class="mt-2"/>
                                         </div>
@@ -129,7 +134,12 @@
                                             <select name="organization_type_id" id=""
                                                     class="form-control form-icons select-active {{ $errors->has('organization_type') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($organizationTypes as $organizationType)
+                                                    <option
+                                                        @selected($organizationType->id === $companyInfo?->organization_type_id) value="{{ $organizationType->id }}">
+                                                        {{ $organizationType->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('organization_type')" class="mt-2"/>
                                         </div>
@@ -141,7 +151,12 @@
                                             <select name="team_size_id" id=""
                                                     class="form-control form-icons select-active {{ $errors->has('team_size') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($teamSizes as $teamSize)
+                                                    <option
+                                                        @selected($teamSize->id === $companyInfo?->team_size_id) value="{{ $teamSize->id }}">
+                                                        {{ $teamSize->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('team_size')" class="mt-2"/>
                                         </div>
@@ -191,9 +206,14 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Country *</label>
                                             <select name="country" id=""
-                                                    class="form-control form-icons select-active {{ $errors->has('country') ? 'is-invalid' : '' }}">
+                                                    class="form-control country form-icons select-active {{ $errors->has('country') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($countries as $country)
+                                                    <option
+                                                        @selected($country->id === $companyInfo?->country) value="{{ $country->id }}">
+                                                        {{ $country->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('country')" class="mt-2"/>
                                         </div>
@@ -203,9 +223,14 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">State *</label>
                                             <select name="state" id=""
-                                                    class="form-control form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }}">
+                                                    class="form-control state form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($states as $state)
+                                                    <option
+                                                        @selected($state->id === $companyInfo?->state) value="{{ $state->id }}">
+                                                        {{ $state->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('state')" class="mt-2"/>
                                         </div>
@@ -215,9 +240,14 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">City *</label>
                                             <select name="city" id=""
-                                                    class="form-control form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }}">
+                                                    class="form-control city form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }}">
                                                 <option value="">Select</option>
-                                                <option value="0">Test 1</option>
+                                                @foreach($cities as $city)
+                                                    <option
+                                                        @selected($city->id === $companyInfo?->city) value="{{ $city->id }}">
+                                                        {{ $city->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('city')" class="mt-2"/>
                                         </div>
@@ -324,3 +354,56 @@
 
     <div class="mt-120"></div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('.country').on('change', function () {
+                let country_id = $(this).val();
+
+                // remove all previous cities
+                $('.city').html("");
+
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route("get-states", ':id') }}'.replace(':id', country_id),
+                    data: {},
+                    success: function (response) {
+                        console.log(response);
+                        let html = '';
+                        $.each(response, function (index, value) {
+                            html += `<option value="${value.id}">${value.name}</option>`;
+                        });
+
+                        $('.state').html(html);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+
+            $('.state').on('change', function () {
+                let state_id = $(this).val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route("get-cities", ':id') }}'.replace(':id', state_id),
+                    data: {},
+                    success: function (response) {
+                        console.log(response);
+                        let html = '';
+                        $.each(response, function (index, value) {
+                            html += `<option value="${value.id}">${value.name}</option>`;
+                        });
+
+                        $('.city').html(html);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

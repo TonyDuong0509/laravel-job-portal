@@ -50,11 +50,11 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         if (Auth::user()->role === 'company') {
-            Company::create([
-                'user_id' => $user->id,
-                'name' => $user->name,
-                'slug' => str_replace(' ', '-', strtolower($user->name)),
-            ]);
+//            Company::create([
+//                'user_id' => $user->id,
+//                'name' => $user->name,
+//                'slug' => str_replace(' ', '-', strtolower($user->name)),
+//            ]);
             return redirect(RouteServiceProvider::COMPANY_DASHBOARD);
         } elseif (Auth::user()->role === 'candidate') {
             // Handle create candidate
