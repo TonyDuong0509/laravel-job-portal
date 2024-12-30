@@ -14,89 +14,80 @@
     <meta name="author" content="">
     <title>JobList - Homepage</title>
 
-    @notifyCss
     <link rel="shortcut icon" type="image/x-icon" href="">
     <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
+        href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
 </head>
 
 <body>
-{{--<div id="preloader-active">--}}
-{{--    <div class="preloader d-flex align-items-center justify-content-center">--}}
-{{--        <div class="preloader-inner position-relative">--}}
-{{--            <div class="text-center"><img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}" alt="joblist">--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</div>--}}
+    <div class="preloader_demo d-none">
+        <div class="img">
+            <img src="{{ asset('frontend/assets/imgs/loading.gif') }}" alt="joblist">
+        </div>
+    </div>
 
-@include('frontend.layouts.header')
+    @include('frontend.layouts.header')
 
-<main class="main">
+    <main class="main">
 
-    <div class="bg-homepage1"></div>
+        <div class="bg-homepage1"></div>
 
-    @yield('contents')
+        @yield('contents')
 
-</main>
+    </main>
 
-<section class="section-box subscription_box">
-    <div class="container">
-        <div class="box-newsletter">
-            <div class="newsletter_textarea">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2 class="text-md-newsletter">Subscribe our newsletter</h2>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="box-form-newsletter">
-                            <form class="form-newsletter">
-                                <input class="input-newsletter" type="text" value=""
-                                       placeholder="Enter your email here">
-                                <button class="btn btn-default font-heading">Subscribe</button>
-                            </form>
+    <section class="section-box subscription_box">
+        <div class="container">
+            <div class="box-newsletter">
+                <div class="newsletter_textarea">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h2 class="text-md-newsletter">Subscribe our newsletter</h2>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="box-form-newsletter">
+                                <form class="form-newsletter">
+                                    <input class="input-newsletter" type="text" value=""
+                                        placeholder="Enter your email here">
+                                    <button class="btn btn-default font-heading">Subscribe</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-@include('frontend.layouts.footer')
+    @include('frontend.layouts.footer')
 
-<script src="{{ asset('frontend/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/waypoints.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/wow.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/magnific-popup.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/select2.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/isotope.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/scrollup.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/jquery-migrate-3.3.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/waypoints.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/wow.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/magnific-popup.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/select2.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/isotope.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/scrollup.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
-@stack('scripts')
+    @stack('scripts')
 
-<x-notify::notify/>
-@notifyJs
-
-<script>
-    $('.datepicker').datepicker({
-        format: 'yyyy-m-d'
-    });
-</script>
-
+    @include('frontend.layouts.scripts')
 
 </body>
 

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Admin Dashboard</title>
-
-    @notifyCss
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -21,85 +20,85 @@
 </head>
 
 <body>
-<div id="app">
-    <div class="main-wrapper main-wrapper-1">
-        <div class="navbar-bg"></div>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
 
-        @include('admin.layouts.sidebar')
+            @include('admin.layouts.sidebar')
 
-        <!-- Main Content -->
-        <div class="main-content">
+            <!-- Main Content -->
+            <div class="main-content">
 
-            @yield('contents')
+                @yield('contents')
 
+            </div>
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; <span style="font-weight: bold">{{ date('Y') }}</span>
+                </div>
+                <div class="footer-right">
+
+                </div>
+            </footer>
         </div>
-        <footer class="main-footer">
-            <div class="footer-left">
-                Copyright &copy; <span style="font-weight: bold">{{ date('Y') }}</span>
-            </div>
-            <div class="footer-right">
-
-            </div>
-        </footer>
     </div>
-</div>
 
-<!-- General JS Scripts -->
-<script src="{{ asset('admin/assets/modules/jquery.min.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/popper.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/tooltip.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
+    <!-- General JS Scripts -->
+    <script src="{{ asset('admin/assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/stisla.js') }}"></script>
 
-<!-- JS Libraies -->
-<script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+    <!-- JS Libraies -->
+    <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
 
-<x-notify::notify/>
-@notifyJs
+    <!-- Template JS File -->
+    <script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
 
-<!-- Template JS File -->
-<script src="{{ asset('admin/assets/js/scripts.js') }}"></script>
-<script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+    @stack('scripts')
 
-@stack('scripts')
+    <script>
+        $(".delete-item").on('click', function(event) {
+            event.preventDefault();
 
-<script>
-    $(".delete-item").on('click', function (event) {
-        event.preventDefault();
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this imaginary file!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
 
-        swal({
-            title: 'Are you sure?',
-            text: 'Once deleted, you will not be able to recover this imaginary file!',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-
-                    let url = $(this).attr('href');
-                    $.ajax({
-                        method: 'DELETE',
-                        url: url,
-                        data: {_token: "{{ csrf_token() }}"},
-                        success: function (response) {
-                            window.location.reload();
-                        },
-                        error: function (xhr, status, error) {
-                            console.log(error);
-                            swal(xhr.responseJSON.message, {
-                                icon: 'error',
-                            });
-                        }
-                    });
-                }
-            });
-    });
-</script>
+                        let url = $(this).attr('href');
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                window.location.reload();
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error',
+                                });
+                            }
+                        });
+                    }
+                });
+        });
+    </script>
 
 </body>
+
 </html>

@@ -23,9 +23,9 @@ class UpdateCompanyInfoRequest extends FormRequest
             'vision' => ['required'],
         ];
 
-        $comapny = Company::where('user_id', Auth::user()->id)->first();
-        if (empty($comapny) || !$comapny?->logo) $rules['logo'][] = 'required';
-        if (empty($comapny) || !$comapny?->banner) $rules['banner'][] = 'required';
+        $company = Company::where('user_id', Auth::user()->id)->first();
+        if (empty($company) || !$company?->logo) $rules['logo'][] = 'required';
+        if (empty($company) || !$company?->banner) $rules['banner'][] = 'required';
 
         return $rules;
     }
