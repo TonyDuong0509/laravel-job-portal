@@ -5,6 +5,12 @@
         format: 'yyyy-m-d'
     });
 
+    $('.yearpicker').datepicker({
+        format: 'yyyy',
+        viewMode: 'years',
+        minViewMode: 'years'
+    });
+
     function showLoader() {
         $('.preloader_demo').removeClass('d-none');
     }

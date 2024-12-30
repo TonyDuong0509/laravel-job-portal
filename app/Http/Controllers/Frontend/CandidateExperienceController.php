@@ -17,8 +17,8 @@ class CandidateExperienceController extends Controller
      */
     public function index()
     {
-        $candidateExperiences = CandidateExperience::where('candidate_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
-        return view('frontend.candidate-dashboard.profile.ajax-experience-table', compact('candidateExperiences'))->render();
+        $candidateExperience = CandidateExperience::where('candidate_id', auth()->user()->candidateProfile->id)->orderBy('id', 'DESC')->get();
+        return view('frontend.candidate-dashboard.profile.ajax-experience-table', compact('candidateExperience'))->render();
     }
 
     /**

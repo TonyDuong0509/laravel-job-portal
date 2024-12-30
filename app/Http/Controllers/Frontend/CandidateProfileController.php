@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
 use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
 use App\Models\Candidate;
+use App\Models\CandidateEducation;
 use App\Models\CandidateExperience;
 use App\Models\CandidateLanguage;
 use App\Models\CandidateSkill;
@@ -28,11 +29,20 @@ class CandidateProfileController extends Controller
     {
         $candidate = Candidate::with(['skills', 'languages'])->where('user_id', Auth::user()->id)->first();
         $candidateExperiences = CandidateExperience::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')->get();
+        $candidateEducation = CandidateEducation::where('candidate_id', $candidate->id)->orderBy('id', 'DESC')->get();
         $experiences = Experience::all();
         $professions = Profession::all();
         $skills = Skill::all();
         $languages = Language::all();
-        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages', 'candidateExperiences'));
+        return view('frontend.candidate-dashboard.profile.index', compact(
+            'candidate',
+            'experiences',
+            'professions',
+            'skills',
+            'languages',
+            'candidateExperiences',
+            'candidateEducation'
+        ));
     }
 
     public function basicInfoUpdate(CandidateBasicProfileUpdateRequest $request): RedirectResponse

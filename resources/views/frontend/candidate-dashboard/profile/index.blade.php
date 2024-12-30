@@ -138,7 +138,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create or Update</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create or Update Experience</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -198,10 +198,58 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="educationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create or Update Education</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST" id="educationForm">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Level</label>
+                                    <input type="text" class="form-control" name="level" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Degree</label>
+                                    <input type="text" class="form-control" name="degree" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Year</label>
+                                    <input type="text" class="form-control yearpicker" name="year" required />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Note</label>
+                                    <textarea name="note" maxlength="500" class="form-control" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
     <script>
+        /** Experience */
         $(document).ready(function() {
             $('.country').on('change', function() {
                 let country_id = $(this).val();
@@ -378,6 +426,150 @@
                             },
                             success: function(response) {
                                 fetchExperience();
+                                hideLoader();
+                                notyf.success(response.message);
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error',
+                                });
+                                hideLoader();
+                            }
+                        });
+                    }
+                });
+        });
+
+
+        /** Education */
+        var editEducationId = "";
+        var editEducationMode = false;
+
+        function fetchEducation() {
+            $.ajax({
+                method: "GET",
+                url: "{{ route('candidate.educations.index') }}",
+                data: {},
+                success: function(response) {
+                    $('.education-tbody').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+
+                }
+            });
+        }
+
+        $('#educationForm').on('submit', function(event) {
+            event.preventDefault();
+
+            const formData = $(this).serialize();
+
+            if (editEducationMode) {
+                $.ajax({
+                    method: "PUT",
+                    url: "{{ route('candidate.educations.update', ':id') }}".replace(':id',
+                        editEducationId),
+                    data: formData,
+                    beforeSend: function() {
+                        showLoader();
+                    },
+                    success: function(response) {
+                        fetchEducation();
+                        $('#educationForm').trigger('reset');
+                        $('#educationModal').modal('hide');
+                        editEducationId = "";
+                        editEducationMode = false;
+                        hideLoader();
+                        notyf.success(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        hideLoader();
+                        console.log(error);
+
+                    }
+                });
+            } else {
+                $.ajax({
+                    method: "POST",
+                    url: "{{ route('candidate.educations.store') }}",
+                    data: formData,
+                    beforeSend: function() {
+                        showLoader();
+                    },
+                    success: function(response) {
+                        fetchEducation();
+                        $('#educationForm').trigger('reset');
+                        $('#educationModal').modal('hide');
+                        hideLoader();
+                        notyf.success(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        hideLoader();
+                    }
+                });
+            }
+        });
+
+        // click and handle edit candidate experience
+        $('body').on('click', '.edit-education', function() {
+            $('#educationForm').trigger('reset');
+            let url = $(this).attr('href');
+
+            $.ajax({
+                method: "GET",
+                url: url,
+                data: {},
+                beforeSend: function() {
+                    showLoader();
+                },
+                success: function(response) {
+                    editEducationId = response.id;
+                    editEducationMode = true;
+                    $.each(response, (index, value) => {
+                        $(`input[name="${index}"]:text`).val(value);
+                        if (index === 'currently_working' && value == 1) {
+                            $(`input[name="${index}"]:checkbox`).prop('checked', true);
+                        }
+                        if (index === 'note') {
+                            $(`textarea[name="${index}"]`).val(value);
+                        }
+                    })
+                    hideLoader();
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                    hideLoader();
+                }
+            });
+        });
+
+        // Delete item
+        $(".delete-education").on('click', function(event) {
+            event.preventDefault();
+            let url = $(this).attr('href');
+            swal({
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this imaginary file!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            beforeSend: function() {
+                                showLoader();
+                            },
+                            success: function(response) {
+                                fetchEducation();
                                 hideLoader();
                                 notyf.success(response.message);
                             },
