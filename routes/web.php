@@ -9,6 +9,8 @@ use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\FrontendCandidatePageController;
+use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\LocationController;
 
 /*
@@ -32,9 +34,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('get-states/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
-Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
-
 /** Candidate Routes */
 Route::group(
     [
@@ -47,6 +46,9 @@ Route::group(
         Route::get('/profile', [CandidateProfileController::class, 'index'])->name('profile.index');
         Route::post('/profile/basic-info-update', [CandidateProfileController::class, 'basicInfoUpdate'])->name('profile.basic-info.update');
         Route::post('/profile/profile-info-update', [CandidateProfileController::class, 'profileInfoUpdate'])->name('profile.profile-info.update');
+        Route::post('/profile/account-info-update', [CandidateProfileController::class, 'accountInfoUpdate'])->name('profile.account-info.update');
+        Route::post('/profile/account-email-update', [CandidateProfileController::class, 'accountEmailUpdate'])->name('profile.account-email.update');
+        Route::post('/profile/account-password-update', [CandidateProfileController::class, 'accountPasswordUpdate'])->name('profile.account-password.update');
         Route::resource('experiences', CandidateExperienceController::class);
         Route::resource('educations', CandidateEducationController::class);
     }
@@ -73,3 +75,12 @@ Route::group(
         Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
     }
 );
+
+Route::get('get-states/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
+Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
+
+Route::get('companies', [FrontendCompanyPageController::class, 'index'])->name('companies.index');
+Route::get('company/{slug}', [FrontendCompanyPageController::class, 'show'])->name('company.show');
+
+Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
+Route::get('candidate/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidate.show');

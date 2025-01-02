@@ -39,13 +39,13 @@
                         <a class="btn btn-default btn-shadow ml-40 hover-up" href="{{ route('login') }}">Sign in</a>
                     @endguest
                     @auth
-                        @if(Auth::user()->role === 'company')
+                        @if (Auth::user()->role === 'company')
                             <a class="btn btn-default btn-shadow ml-40 hover-up" style="width: 200px"
-                               href="{{ route('company.dashboard') }}">Company
+                                href="{{ route('company.dashboard') }}">Company
                                 Dashboard</a>
                         @elseif(Auth::user()->role === 'candidate')
                             <a class="btn btn-default btn-shadow ml-40 hover-up" style="width: 200px"
-                               href="{{ route('candidate.dashboard') }}">Candidate
+                                href="{{ route('candidate.dashboard') }}">Candidate
                                 Dashboard</a>
                         @endif
                     @endauth
@@ -117,7 +117,7 @@
                                 </ul>
                             </li>
                             <li><a href="http://wp.alithemes.com/html/joblist/demos/dashboard"
-                                   target="_blank">Dashboard</a></li>
+                                    target="_blank">Dashboard</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -199,7 +199,7 @@
                                 </ul>
                             </li>
                             <li><a href="http://wp.alithemes.com/html/joblist/demos/dashboard"
-                                   target="_blank">Dashboard</a></li>
+                                    target="_blank">Dashboard</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -213,7 +213,8 @@
                         <li><a href="page-signin.html">Sign Out</a></li>
                     </ul>
                 </div>
-                <div class="site-copyright">Copyright &copy; <span style="font-weight: bold">{{ date('Y') }}</span>
+                <div class="site-copyright">Copyright &copy; <span
+                        style="font-weight: bold">{{ date('Y') }}</span>
                 </div>
             </div>
         </div>

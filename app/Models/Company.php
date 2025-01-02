@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Company extends Model
 {
@@ -31,4 +31,43 @@ class Company extends Model
         'address',
         'map_link',
     ];
+
+    // public function sluggable(): array
+    // {
+    //     return [
+    //         'slug' => [
+    //             'source' => 'name'
+    //         ]
+    //     ];
+    // }
+
+    public function industryType(): BelongsTo
+    {
+        return $this->belongsTo(IndustryType::class, 'industry_type_id', 'id');
+    }
+
+    public function organizationType(): BelongsTo
+    {
+        return $this->belongsTo(OrganizationType::class, 'organization_type_id', 'id');
+    }
+
+    public function teamSize(): BelongsTo
+    {
+        return $this->belongsTo(TeamSize::class, 'team_size_id', 'id');
+    }
+
+    public function companyCountry(): BelongsTo
+    {
+        return $this->belongsTo(Country::class, 'country', 'id');
+    }
+
+    public function companyState(): BelongsTo
+    {
+        return $this->belongsTo(State::class, 'state', 'id');
+    }
+
+    public function companyCity(): BelongsTo
+    {
+        return $this->belongsTo(City::class, 'city', 'id');
+    }
 }

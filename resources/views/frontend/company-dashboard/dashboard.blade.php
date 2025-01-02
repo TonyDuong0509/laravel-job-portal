@@ -48,14 +48,14 @@
                                 </div>
                             </div>
 
-                            @if(!\App\Helpers\isCompanyProfileComplete())
+                            @if (!\App\Helpers\isCompanyProfileComplete())
                                 <div class="row">
                                     <div class="col-12 mt-30">
                                         <div class="dash_alert_box p-30 bg-danger rounded-4 d-flex flex-wrap">
-                                      <span class="img">
-                                        <img src="{{ asset(\Illuminate\Support\Facades\Auth::user()->image) }}"
-                                             alt="alert">
-                                      </span>
+                                            <span class="img">
+                                                <img src="{{ asset(\Illuminate\Support\Facades\Auth::user()->image) }}"
+                                                    alt="alert">
+                                            </span>
                                             <div class="text">
                                                 <h4>Warning: You have to complete your company profile first !</h4>
                                                 <p>Please complete your company profile to use all the features.</p>
