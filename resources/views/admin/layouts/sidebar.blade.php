@@ -141,6 +141,14 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="{{ route('admin.plans.index') }}"
+                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.plans.*']) }}">
+                    <i class="far fa-square"></i>
+                    <span>Price Plan</span>
+                </a>
+            </li>
         </ul>
     </aside>
 </div>

@@ -7,23 +7,21 @@
 
     @include('frontend.home.sections.category-section')
 
-    {{--    @include('frontend.home.sections.featured-job-section')--}}
+    {{--    @include('frontend.home.sections.featured-job-section') --}}
 
-    {{--    @include('frontend.home.sections.why-choose-us-section')--}}
+    {{--    @include('frontend.home.sections.why-choose-us-section') --}}
 
-    {{--    @include('frontend.home.sections.learn-more-section')--}}
+    {{--    @include('frontend.home.sections.learn-more-section') --}}
 
-    {{--    @include('frontend.home.sections.counter-section')--}}
+    {{--    @include('frontend.home.sections.counter-section') --}}
 
-    {{--    @include('frontend.home.sections.recruiters-section')--}}
+    {{--    @include('frontend.home.sections.recruiters-section') --}}
 
-    {{--    @include('frontend.home.sections.price-plan-section')--}}
+    @include('frontend.home.sections.price-plan-section')
 
-    {{--    @include('frontend.home.sections.job-by-location-section')--}}
+    {{--    @include('frontend.home.sections.job-by-location-section') --}}
 
-    {{--    @include('frontend.home.sections.review-section')--}}
+    {{--    @include('frontend.home.sections.review-section') --}}
 
-    {{--    @include('frontend.home.sections.blog-section')--}}
-
+    {{--    @include('frontend.home.sections.blog-section') --}}
 @endsection
-

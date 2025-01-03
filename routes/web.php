@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\LocationController;
+use App\Http\Controllers\Frontend\PricingPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +85,5 @@ Route::get('company/{slug}', [FrontendCompanyPageController::class, 'show'])->na
 
 Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
 Route::get('candidate/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidate.show');
+
+Route::get('pricing', PricingPageController::class)->name('pricing.index');

@@ -3,7 +3,7 @@
         <div class="main-header">
             <div class="header-left">
                 <div class="header-logo">
-                    <a class="d-flex" href="index.html">
+                    <a class="d-flex" href="{{ url('/') }}">
                         <img alt="Job List" src="{{ asset('frontend/assets/imgs/template/logo.png') }}">
                     </a>
                 </div>
@@ -11,7 +11,7 @@
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <li class="has-children"><a class="active" href="index.html">Home</a></li>
+                        <li class="has-children"><a class="active" href="{{ url('/') }}">Home</a></li>
                         <li class="has-children"><a href="jobs-list.html">Find a Job</a></li>
                         <li class="has-children"><a href="companies-grid.html">Recruiters</a></li>
                         <li class="has-children"><a href="candidates-grid.html">Candidates</a></li>
@@ -68,7 +68,7 @@
                     <!-- mobile menu start-->
                     <nav>
                         <ul class="mobile-menu font-heading">
-                            <li class="has-children"><a class="active" href="index.html">Home</a>
+                            <li class="has-children"><a class="active" href="{{ url('/') }}">Home</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.html">Home 1</a></li>
                                     <li><a href="index-2.html">Home 2</a></li>

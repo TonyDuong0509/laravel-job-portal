@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\CityController;
@@ -78,5 +79,8 @@ Route::group(
 
         // Skill Route
         Route::resource('skills', SkillController::class);
+
+        // Plan Route
+        Route::resource('plans', PlanController::class);
     }
 );
