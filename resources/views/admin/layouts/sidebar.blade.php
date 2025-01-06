@@ -88,10 +88,10 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Stisla</a>
+            <a href="{{ route('admin.dashboard') }}">Stisla</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="{{ route('admin.dashboard') }}">St</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
@@ -101,6 +101,20 @@
             </li>
             <li class="menu-header">Starter</li>
 
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.orders.*']) }}">
+                <a href="{{ route('admin.orders.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Orders</span>
+                </a>
+            </li>
+
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.job-categories.*']) }}">
+                <a href="{{ route('admin.job-categories.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Job Category</span>
+                </a>
+            </li>
+
             <li
                 class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
@@ -109,8 +123,8 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.industry-types.*']) }}"><a class="nav-link"
                             href="{{ route('admin.industry-types.index') }}">Industry
                             Type</a></li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.organization-types.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.organization-types.index') }}">Organization
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.organization-types.*']) }}"><a
+                            class="nav-link" href="{{ route('admin.organization-types.index') }}">Organization
                             Type</a>
                     </li>
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
@@ -144,9 +158,23 @@
 
             <li>
                 <a href="{{ route('admin.plans.index') }}"
-                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.plans.*']) }}">
+                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.plans']) }}">
                     <i class="far fa-square"></i>
                     <span>Price Plan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.payment-settings.index') }}"
+                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.payment-settings.index']) }}">
+                    <i class="far fa-square"></i>
+                    <span>Payment Setting</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.site-settings.index') }}"
+                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.site-settings.index']) }}">
+                    <i class="far fa-square"></i>
+                    <span>Site Setting</span>
                 </a>
             </li>
         </ul>

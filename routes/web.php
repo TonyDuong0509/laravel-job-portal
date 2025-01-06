@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -8,7 +9,9 @@ use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
+use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\LocationController;
@@ -74,6 +77,26 @@ Route::group(
         Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');
         Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
         Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
+
+        // Order Route
+        Route::get('orders', [CompanyOrderController::class, 'index'])->name('orders.index');
+        Route::get('orders/{id}', [CompanyOrderController::class, 'show'])->name('orders.show');
+        Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
+
+        // Payment Route
+        Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+        Route::get('payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');
+
+        Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+        Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+        Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+
+        Route::get('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
+        Route::get('stripe/success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
+        Route::get('stripe/cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
+
+        Route::get('razorpay-redirect', [PaymentController::class, 'razorpayRedirect'])->name('razorpay.redirect');
+        Route::post('razorpay/payment', [PaymentController::class, 'payWithRazorpay'])->name('razorpay.payment');
     }
 );
 
@@ -87,3 +110,4 @@ Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->nam
 Route::get('candidate/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidate.show');
 
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
+Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.index');
