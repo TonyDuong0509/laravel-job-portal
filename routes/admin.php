@@ -11,14 +11,20 @@ use App\Http\Controllers\Admin\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobExperienceController;
+use App\Http\Controllers\Admin\JobRoleController;
+use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PaypalSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\CityController;
 
 Route::group(
@@ -95,6 +101,24 @@ Route::group(
 
         // Job Category Route
         Route::resource('job-categories', JobCategoryController::class);
+
+        // Education Route
+        Route::resource('educations', EducationController::class);
+
+        // Job Type Route
+        Route::resource('job-types', JobTypeController::class);
+
+        // Salary Type Route
+        Route::resource('salary-types', SalaryTypeController::class);
+
+        // Tag Route
+        Route::resource('tags', TagController::class);
+
+        // Job Role Route
+        Route::resource('job-roles', JobRoleController::class);
+
+        // Job Experience Route
+        Route::resource('job-experiences', JobExperienceController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

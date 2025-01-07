@@ -136,6 +136,24 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
                             href="{{ route('admin.skills.index') }}">Skills</a>
                     </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.educations.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.educations.index') }}">Educations</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-types.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-types.index') }}">Job Types</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.salary-types.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.salary-types.index') }}">Salary Types</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.tags.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.tags.index') }}">Tags</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-roles.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-roles.index') }}">Job Roles</a>
+                    </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-experiences.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-experiences.index') }}">Job Experiences</a>
+                    </li>
                 </ul>
             </li>
 
