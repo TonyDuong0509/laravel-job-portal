@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\JobCategoryController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
@@ -119,6 +120,10 @@ Route::group(
 
         // Job Experience Route
         Route::resource('job-experiences', JobExperienceController::class);
+
+        // Job Route
+        Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.change');
+        Route::resource('jobs', JobController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

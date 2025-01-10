@@ -12,6 +12,7 @@ use App\Models\IndustryType;
 use App\Models\OrganizationType;
 use App\Models\State;
 use App\Models\TeamSize;
+use App\Models\User;
 use App\Services\Notify;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
@@ -32,11 +33,18 @@ class CompanyProfileController extends Controller
         $organizationTypes = OrganizationType::all();
         $teamSizes = TeamSize::all();
         $countries = Country::all();
-        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo->country)->get();
-        $cities = City::select(['id', 'name', 'country_id', 'state_id'])->where('state_id', $companyInfo->state)->get();
+        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo?->country)->get();
+        $cities = City::select(['id', 'name', 'country_id', 'state_id'])->where('state_id', $companyInfo?->state)->get();
 
-        return view('frontend.company-dashboard.profile.index', compact('companyInfo',
-            'industryTypes', 'organizationTypes', 'teamSizes', 'countries', 'states', 'cities'));
+        return view('frontend.company-dashboard.profile.index', compact(
+            'companyInfo',
+            'industryTypes',
+            'organizationTypes',
+            'teamSizes',
+            'countries',
+            'states',
+            'cities'
+        ));
     }
 
     public function updateCompanyInfo(UpdateCompanyInfoRequest $request): RedirectResponse
@@ -106,9 +114,13 @@ class CompanyProfileController extends Controller
             'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'email']
         ]);
-        Auth::user()->update($validatedData);
+        $user = Auth::user()->id;
+        $user = User::findOrFail($user);
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->save();
 
-        Notify::createdNotification();
+        Notify::updatedNotification();
 
         return redirect()->back();
     }
@@ -118,10 +130,10 @@ class CompanyProfileController extends Controller
         $request->validate([
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        Auth::user()->update([
-            'password' => bcrypt($request->password),
-        ]);
+        $user = Auth::user()->id;
+        $user = User::findOrFail($user);
+        $user->password = bcrypt($request->password);
+        $user->save();
 
         Notify::updatedNotification();
 

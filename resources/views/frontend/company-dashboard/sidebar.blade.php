@@ -3,6 +3,8 @@
         <ul class="nav" role="tablist">
             <li><a class="btn btn-border mb-20 {{ \App\Helpers\setSidebarActive(['company.dashboard']) }}"
                     href="{{ route('company.dashboard') }}">Dashboard</a></li>
+            <li><a class="btn btn-border mb-20 {{ \App\Helpers\setSidebarActive(['company.jobs.index']) }}"
+                    href="{{ route('company.jobs.index') }}">Jobs</a></li>
             <li><a class="btn btn-border mb-20 {{ \App\Helpers\setSidebarActive(['company.orders.index']) }}"
                     href="{{ route('company.orders.index') }}">Orders</a></li>
             <li><a class="btn btn-border mb-20 {{ \App\Helpers\setSidebarActive(['company.profile']) }}"

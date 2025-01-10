@@ -3,7 +3,7 @@
         <div class="row justify-content-between">
             <div class="footer-col-1 col-md-3 col-sm-12">
                 <a class="footer_logo" href="index.html">
-                    <img alt="joblist" src="assets/imgs/template/logo_2.png">
+                    <img alt="joblist" src="{{ asset('frontend/assets/imgs/template/logo_2.png') }}">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">joblist is the heart of the design community and
                     the
@@ -54,12 +54,11 @@
         </div>
         <div class="footer-bottom mt-50">
             <div class="row">
-                <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2023. JOBLIST all right
-              reserved</span></div>
+                <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright &copy; 2025.</span></div>
                 <div class="col-md-6 text-md-end text-start">
-                    <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a
-                            class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a
-                            class="font-xs color-text-paragraph" href="#">Security</a></div>
+                    <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy
+                            Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp;
+                            Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>
                 </div>
             </div>
         </div>

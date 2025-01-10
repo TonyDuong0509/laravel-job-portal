@@ -29,7 +29,7 @@
                                 alt="{{ $company->name }}">
                         </div>
                         <h5 class="f-18">{{ $company->name }} <span
-                                class="card-location font-regular ml-20">{{ $company->companyCountry->name }}</span>
+                                class="card-location font-regular ml-20">{{ App\Helpers\formatLocation($company->companyCountry->name, $company->companyState->name, $company->companyCity->name) }}</span>
                         </h5>
                     </div>
                     <div class="col-lg-4 col-md-12 text-lg-end"><a class="btn btn-apply btn-apply-big" href="javascript:;"
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="box-related-job content-page" id="open-position">
-                        <h5 class="mb-30">Latest Jobs</h5>
+                        <h5 class="mb-30">Open Jobs</h5>
                         <div class="box-list-jobs display-list">
                             <div class="col-xl-12 col-12">
                                 <div class="card-grid-2 hover-up"><span class="flash"></span>
@@ -100,90 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12 col-12">
-                                <div class="card-grid-2 hover-up"><span class="flash"></span>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="card-grid-2-image-left">
-                                                <div class="image-box"><img
-                                                        src="../../../public/frontend/assets/imgs/brands/brand-7.png"
-                                                        alt="joblist"></div>
-                                                <div class="right-info"><a class="name-job" href="">Nintendo</a><span
-                                                        class="location-small">New York,
-                                                        US</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
-                                            <div class="pl-15 mb-15 mt-30"><a class="btn btn-grey-small mr-5"
-                                                    href="#">Adobe
-                                                    XD</a><a class="btn btn-grey-small mr-5" href="#">Figma</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-block-info">
-                                        <h4><a href="job-details.html">Products Manager</a></h4>
-                                        <div class="mt-5"><span class="card-briefcase">Full time</span><span
-                                                class="card-time"><span>6</span><span> mins ago</span></span></div>
-                                        <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing
-                                            elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.</p>
-                                        <div class="card-2-bottom mt-20">
-                                            <div class="row">
-                                                <div class="col-lg-7 col-7"><span class="card-text-price">$250</span><span
-                                                        class="text-muted">/Hour</span></div>
-                                                <div class="col-lg-5 col-5 text-end">
-                                                    <div class="btn btn-apply-now" data-bs-toggle="modal"
-                                                        data-bs-target="#ModalApplyJobForm">
-                                                        Apply now
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-12 col-12">
-                                <div class="card-grid-2 hover-up"><span class="flash"></span>
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="card-grid-2-image-left">
-                                                <div class="image-box"><img
-                                                        src="../../../public/frontend/assets/imgs/brands/brand-8.png"
-                                                        alt="joblist"></div>
-                                                <div class="right-info"><a class="name-job"
-                                                        href="">Periscope</a><span class="location-small">New York,
-                                                        US</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
-                                            <div class="pl-15 mb-15 mt-30"><a class="btn btn-grey-small mr-5"
-                                                    href="#">Adobe
-                                                    XD</a><a class="btn btn-grey-small mr-5" href="#">Figma</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-block-info">
-                                        <h4><a href="job-details.html">Lead Quality Control QA</a></h4>
-                                        <div class="mt-5"><span class="card-briefcase">Full time</span><span
-                                                class="card-time"><span>6</span><span> mins ago</span></span></div>
-                                        <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing
-                                            elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.</p>
-                                        <div class="card-2-bottom mt-20">
-                                            <div class="row">
-                                                <div class="col-lg-7 col-7"><span class="card-text-price">$250</span><span
-                                                        class="text-muted">/Hour</span></div>
-                                                <div class="col-lg-5 col-5 text-end">
-                                                    <div class="btn btn-apply-now" data-bs-toggle="modal"
-                                                        data-bs-target="#ModalApplyJobForm">
-                                                        Apply now
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="paginations mt-60">
                             <ul class="pager">
@@ -203,7 +119,8 @@
                             <div class="avatar-sidebar">
                                 <div class="sidebar-info pl-0"><span
                                         class="sidebar-company">{{ $company->name }}</span><span
-                                        class="card-location">{{ $company->companyCountry->name }}</span></div>
+                                        class="card-location">{{ App\Helpers\formatLocation($company->companyCountry->name, $company->companyState->name) }}</span>
+                                </div>
                             </div>
                         </div>
                         <div class="sidebar-list-job">
@@ -246,7 +163,7 @@
                         <div class="sidebar-list-job">
                             <ul class="ul-disc">
                                 <li>
-                                    {{ $company->address }}
+                                    Address: {{ $company->address }}
                                     {{ $company->companyCity?->name ? ', ' . $company->companyCity->name : '' }}
                                     {{ $company->companyState?->name ? ', ' . $company->companyState->name : '' }}
                                     {{ $company->companyCountry?->name ? ', ' . $company->companyCountry->name : '' }}

@@ -16,7 +16,7 @@ class CompanyOrderController extends Controller
 {
     public function index(): View
     {
-        $orders = Order::where('company_id', Auth::user()->company->id)->paginate(20);
+        $orders = Order::where('company_id', Auth::user()->company?->id)->paginate(20);
         return view('frontend.company-dashboard.order.index', compact('orders'));
     }
 

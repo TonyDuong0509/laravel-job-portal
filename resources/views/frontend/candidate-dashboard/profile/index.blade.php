@@ -27,29 +27,27 @@
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">
+                                data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                aria-selected="true">
                                 Basic
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-profile" type="button" role="tab"
-                                    aria-controls="pills-profile"
-                                    aria-selected="false">Profile
+                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                aria-selected="false">Profile
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-experience-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-experience" type="button" role="tab"
-                                    aria-controls="pills-experience" aria-selected="false">Experience & Education
+                                data-bs-target="#pills-experience" type="button" role="tab"
+                                aria-controls="pills-experience" aria-selected="false">Experience & Education
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-account-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-account" type="button" role="tab"
-                                    aria-controls="pills-account"
-                                    aria-selected="false">Account
+                                data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account"
+                                aria-selected="false">Account
                                 Settings
                             </button>
                         </li>
@@ -139,7 +137,7 @@
     <div class="mt-120"></div>
 
     <div class="modal fade" id="experienceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -153,45 +151,44 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Company</label>
-                                    <input type="text" class="form-control" name="company" required/>
+                                    <input type="text" class="form-control" name="company" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Department</label>
-                                    <input type="text" class="form-control" name="department" required/>
+                                    <input type="text" class="form-control" name="department" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Designation</label>
-                                    <input type="text" class="form-control" name="designation" required/>
+                                    <input type="text" class="form-control" name="designation" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Start Date</label>
-                                    <input type="text" class="form-control datepicker" name="start" required/>
+                                    <input type="text" class="form-control datepicker" name="start" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Start End</label>
-                                    <input type="text" class="form-control datepicker" name="end" required/>
+                                    <input type="text" class="form-control datepicker" name="end" required />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-check form-group form-check-inline">
                                     <input type="checkbox" class="form-check-input" style="margin-right: 10px"
-                                           name="currently_working">
+                                        name="currently_working">
                                     <label for="" class="form-check-label">I am currently working</label>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Responsibilities</label>
-                                    <textarea name="responsibility" maxlength="500" class="form-control" id="" cols="30"
-                                              rows="10"></textarea>
+                                    <textarea name="responsibility" maxlength="500" class="form-control" id="" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +203,7 @@
     </div>
 
     <div class="modal fade" id="educationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -220,26 +217,25 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Level</label>
-                                    <input type="text" class="form-control" name="level" required/>
+                                    <input type="text" class="form-control" name="level" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Degree</label>
-                                    <input type="text" class="form-control" name="degree" required/>
+                                    <input type="text" class="form-control" name="degree" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Year</label>
-                                    <input type="text" class="form-control yearpicker" name="year" required/>
+                                    <input type="text" class="form-control yearpicker" name="year" required />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="">Note</label>
-                                    <textarea name="note" maxlength="500" class="form-control" id="" cols="30"
-                                              rows="10"></textarea>
+                                    <textarea name="note" maxlength="500" class="form-control" id="" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -257,8 +253,8 @@
 @push('scripts')
     <script>
         /** Experience */
-        $(document).ready(function () {
-            $('.country').on('change', function () {
+        $(document).ready(function() {
+            $('.country').on('change', function() {
                 let country_id = $(this).val();
 
                 // remove all previous cities
@@ -268,39 +264,39 @@
                     method: 'GET',
                     url: '{{ route('get-states', ':id') }}'.replace(':id', country_id),
                     data: {},
-                    success: function (response) {
+                    success: function(response) {
                         let html = '';
-                        $.each(response, function (index, value) {
+                        $.each(response, function(index, value) {
                             html +=
                                 `<option value="${value.id}">${value.name}</option>`;
                         });
 
                         $('.state').html(html);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.log(error);
                     }
                 });
             });
 
-            $('.state').on('change', function () {
+            $('.state').on('change', function() {
                 let state_id = $(this).val();
 
                 $.ajax({
                     method: 'GET',
                     url: '{{ route('get-cities', ':id') }}'.replace(':id', state_id),
                     data: {},
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                         let html = '';
-                        $.each(response, function (index, value) {
+                        $.each(response, function(index, value) {
                             html +=
                                 `<option value="${value.id}">${value.name}</option>`;
                         });
 
                         $('.city').html(html);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.log(error);
                     }
                 });
@@ -315,17 +311,17 @@
                 method: "GET",
                 url: "{{ route('candidate.experiences.index') }}",
                 data: {},
-                success: function (response) {
+                success: function(response) {
                     $('.experience-tbody').html(response);
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.log(error);
 
                 }
             });
         }
 
-        $('#experienceForm').on('submit', function (event) {
+        $('#experienceForm').on('submit', function(event) {
             event.preventDefault();
 
             const formData = $(this).serialize();
@@ -335,10 +331,10 @@
                     method: "PUT",
                     url: "{{ route('candidate.experiences.update', ':id') }}".replace(':id', editId),
                     data: formData,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         showLoader();
                     },
-                    success: function (response) {
+                    success: function(response) {
                         fetchExperience();
                         $('#experienceForm').trigger('reset');
                         $('#experienceModal').modal('hide');
@@ -347,7 +343,7 @@
                         hideLoader();
                         notyf.success(response.message);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         hideLoader();
                         console.log(error);
 
@@ -358,17 +354,17 @@
                     method: "POST",
                     url: "{{ route('candidate.experiences.store') }}",
                     data: formData,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         showLoader();
                     },
-                    success: function (response) {
+                    success: function(response) {
                         fetchExperience();
                         $('#experienceForm').trigger('reset');
                         $('#experienceModal').modal('hide');
                         hideLoader();
                         notyf.success(response.message);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.log(error);
                         hideLoader();
                     }
@@ -377,7 +373,7 @@
         });
 
         // click and handle edit candidate experience
-        $('body').on('click', '.edit-experience', function () {
+        $('body').on('click', '.edit-experience', function() {
             $('#experienceForm').trigger('reset');
             let url = $(this).attr('href');
 
@@ -385,10 +381,10 @@
                 method: "GET",
                 url: url,
                 data: {},
-                beforeSend: function () {
+                beforeSend: function() {
                     showLoader();
                 },
-                success: function (response) {
+                success: function(response) {
                     editId = response.id;
                     editMode = true;
                     $.each(response, (index, value) => {
@@ -402,7 +398,7 @@
                     })
                     hideLoader();
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.log(error);
                     hideLoader();
                 }
@@ -410,16 +406,16 @@
         });
 
         // Delete item
-        $(".delete-experience").on('click', function (event) {
+        $(".delete-experience").on('click', function(event) {
             event.preventDefault();
             let url = $(this).attr('href');
             swal({
-                title: 'Are you sure?',
-                text: 'Once deleted, you will not be able to recover this imaginary file!',
-                icon: 'warning',
-                buttons: true,
-                dangerMode: true,
-            })
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this imaginary file!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
@@ -428,15 +424,15 @@
                             data: {
                                 _token: "{{ csrf_token() }}"
                             },
-                            beforeSend: function () {
+                            beforeSend: function() {
                                 showLoader();
                             },
-                            success: function (response) {
+                            success: function(response) {
                                 fetchExperience();
                                 hideLoader();
                                 notyf.success(response.message);
                             },
-                            error: function (xhr, status, error) {
+                            error: function(xhr, status, error) {
                                 console.log(error);
                                 swal(xhr.responseJSON.message, {
                                     icon: 'error',
@@ -458,17 +454,17 @@
                 method: "GET",
                 url: "{{ route('candidate.educations.index') }}",
                 data: {},
-                success: function (response) {
+                success: function(response) {
                     $('.education-tbody').html(response);
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.log(error);
 
                 }
             });
         }
 
-        $('#educationForm').on('submit', function (event) {
+        $('#educationForm').on('submit', function(event) {
             event.preventDefault();
 
             const formData = $(this).serialize();
@@ -479,10 +475,10 @@
                     url: "{{ route('candidate.educations.update', ':id') }}".replace(':id',
                         editEducationId),
                     data: formData,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         showLoader();
                     },
-                    success: function (response) {
+                    success: function(response) {
                         fetchEducation();
                         $('#educationForm').trigger('reset');
                         $('#educationModal').modal('hide');
@@ -491,7 +487,7 @@
                         hideLoader();
                         notyf.success(response.message);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         hideLoader();
                         console.log(error);
 
@@ -502,17 +498,17 @@
                     method: "POST",
                     url: "{{ route('candidate.educations.store') }}",
                     data: formData,
-                    beforeSend: function () {
+                    beforeSend: function() {
                         showLoader();
                     },
-                    success: function (response) {
+                    success: function(response) {
                         fetchEducation();
                         $('#educationForm').trigger('reset');
                         $('#educationModal').modal('hide');
                         hideLoader();
                         notyf.success(response.message);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.log(error);
                         hideLoader();
                     }
@@ -521,7 +517,7 @@
         });
 
         // click and handle edit candidate experience
-        $('body').on('click', '.edit-education', function () {
+        $('body').on('click', '.edit-education', function() {
             $('#educationForm').trigger('reset');
             let url = $(this).attr('href');
 
@@ -529,10 +525,10 @@
                 method: "GET",
                 url: url,
                 data: {},
-                beforeSend: function () {
+                beforeSend: function() {
                     showLoader();
                 },
-                success: function (response) {
+                success: function(response) {
                     editEducationId = response.id;
                     editEducationMode = true;
                     $.each(response, (index, value) => {
@@ -546,7 +542,7 @@
                     })
                     hideLoader();
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.log(error);
                     hideLoader();
                 }
@@ -554,16 +550,16 @@
         });
 
         // Delete item
-        $(".delete-education").on('click', function (event) {
+        $(".delete-education").on('click', function(event) {
             event.preventDefault();
             let url = $(this).attr('href');
             swal({
-                title: 'Are you sure?',
-                text: 'Once deleted, you will not be able to recover this imaginary file!',
-                icon: 'warning',
-                buttons: true,
-                dangerMode: true,
-            })
+                    title: 'Are you sure?',
+                    text: 'Once deleted, you will not be able to recover this imaginary file!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true,
+                })
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
@@ -572,15 +568,15 @@
                             data: {
                                 _token: "{{ csrf_token() }}"
                             },
-                            beforeSend: function () {
+                            beforeSend: function() {
                                 showLoader();
                             },
-                            success: function (response) {
+                            success: function(response) {
                                 fetchEducation();
                                 hideLoader();
                                 notyf.success(response.message);
                             },
-                            error: function (xhr, status, error) {
+                            error: function(xhr, status, error) {
                                 console.log(error);
                                 swal(xhr.responseJSON.message, {
                                     icon: 'error',

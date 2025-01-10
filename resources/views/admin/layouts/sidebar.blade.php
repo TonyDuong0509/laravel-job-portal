@@ -115,9 +115,17 @@
                 </a>
             </li>
 
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.jobs.*']) }}">
+                <a href="{{ route('admin.jobs.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Job Post</span>
+                </a>
+            </li>
+
             <li
                 class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i>
                     <span>Attributes</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.industry-types.*']) }}"><a class="nav-link"

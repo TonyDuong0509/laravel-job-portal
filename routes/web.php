@@ -14,6 +14,8 @@ use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
+use App\Http\Controllers\Frontend\FrontendJobPageController;
+use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\PricingPageController;
 
@@ -27,16 +29,6 @@ use App\Http\Controllers\Frontend\PricingPageController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__ . '/auth.php';
 
 /** Candidate Routes */
 Route::group(
@@ -83,6 +75,9 @@ Route::group(
         Route::get('orders/{id}', [CompanyOrderController::class, 'show'])->name('orders.show');
         Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
 
+        // Job Route
+        Route::resource('jobs', JobController::class);
+
         // Payment Route
         Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
         Route::get('payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');
@@ -100,6 +95,17 @@ Route::group(
     }
 );
 
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
+
 Route::get('get-states/{country_id}', [LocationController::class, 'getStates'])->name('get-states');
 Route::get('get-cities/{state_id}', [LocationController::class, 'getCities'])->name('get-cities');
 
@@ -111,3 +117,7 @@ Route::get('candidate/{slug}', [FrontendCandidatePageController::class, 'show'])
 
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
 Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.index');
+
+// Find a job route
+Route::get('jobs', [FrontendJobPageController::class, 'index'])->name('jobs.index');
+Route::get('jobs/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');

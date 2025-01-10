@@ -82,3 +82,36 @@ if (!function_exists('isCandidateProfileComplete')) {
         return true;
     }
 }
+
+// Store plan info in session
+if (!function_exists('storePlanInformation')) {
+    function storePlanInformation()
+    {
+        session()->forget('user_plan');
+        session([
+            'user_plan' => isset(auth()->user()?->company->userPlan) ? auth()->user()?->company->userPlan : [],
+        ]);
+    };
+}
+
+//  Format location
+if (!function_exists('formatLocation')) {
+    function formatLocation($country = null, $state = null, $city = null, $address = null): string
+    {
+        $location = '';
+        if ($address) {
+            $location .= $address;
+        }
+        if ($city) {
+            $location .= $address ? ', ' . $city : $city;
+        }
+        if ($state) {
+            $location .= $city ? ', ' . $state : $state;
+        }
+        if ($country) {
+            $location .= $state ? ', ' . $country : $country;
+        }
+
+        return $location;
+    };
+}

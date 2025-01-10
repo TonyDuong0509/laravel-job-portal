@@ -103,6 +103,7 @@ video {
 main {
     display: block;
     clear: both;
+    background-color: white;
 }
 
 thead {
@@ -9707,4 +9708,62 @@ ul.timeline > li:before {
     width: 20px;
     height: 20px;
     z-index: 400;
+}
+
+.tag.label.label-info {
+    background: var(--colorPrimary);
+  padding: 5px;
+}
+.bootstrap-tagsinput input {
+    height: 40px;
+  }
+.bootstrap-tagsinput {
+    width: 100%;
+    box-shadow: none;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+.job-skill {
+    background: var(--colorPrimary) !important;
+    padding: 7px 10px 7px 10px !important;
+    color: white !important;
+}
+
+.featured {
+    background: #ae00ae !important;
+    color: white !important;
+}
+
+.featured:hover {
+    color: white !important;
+}
+
+.highlight {
+    background: #f05d04 !important;
+    color: white !important;
+}
+
+.highlight:hover {
+    color: white !important;
+}
+
+.box-map iframe {
+    height: 30vh;
+}
+
+.job-category li a {
+    display: block;
+    padding: 8px;
+}
+
+.x-active {
+    color: var(--colorPrimary)
+}
+
+.x-radio {
+    height: 18px !important;
+    width: 40px !important;
 }
