@@ -199,8 +199,8 @@
                                             @foreach ($jobCategories as $jobCategory)
                                                 <li>
                                                     <label class="cb-container">
-                                                        <input type="checkbox" value="{{ $jobCategory->slug }}"
-                                                            name="category[]" /><span
+                                                        <input @checked(request()->has('category') ? in_array($jobCategory->slug, request()->category) : false) type="checkbox"
+                                                            value="{{ $jobCategory->slug }}" name="category[]" /><span
                                                             class="text-small">{{ $jobCategory->name }}</span><span
                                                             class="checkmark"></span></label><span
                                                         class="number-item">{{ $jobCategory->jobs_count }}</span>
@@ -248,8 +248,8 @@
                                             @foreach ($jobTypes as $jobType)
                                                 <li>
                                                     <label class="cb-container">
-                                                        <input type="checkbox" name="jobtype[]"
-                                                            value="{{ $jobType->slug }}" /><span
+                                                        <input @checked(request()->has('jobtype') ? in_array($jobType->slug, request()->jobtype) : false) type="checkbox"
+                                                            name="jobtype[]" value="{{ $jobType->slug }}" /><span
                                                             class="text-small">{{ $jobType->name }}</span><span
                                                             class="checkmark"></span></label><span
                                                         class="number-item">{{ $jobType->jobs_count }}</span>
