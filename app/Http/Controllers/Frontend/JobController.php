@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\JobCreateRequest;
+use App\Models\AppliedJob;
 use App\Models\Benefits;
 use App\Models\City;
 use App\Models\Company;
@@ -41,9 +42,21 @@ class JobController extends Controller
     public function index(): View
     {
         $query = Job::query();
+        $query->withCount('applications');
         $this->search($query, ['title', 'slug']);
         $jobs = $query->where('company_id', Auth::user()->company?->id)->orderBy('id', 'DESC')->paginate(20);
+
         return view('frontend.company-dashboard.job.index', compact('jobs'));
+    }
+
+    public function applications(string $id): View
+    {
+        $jobTitle = Job::select('title')->where('id', $id)->first();
+        $applications = AppliedJob::where('job_id', $id)->paginate(10);
+        return view('frontend.company-dashboard.applications.index', compact(
+            'applications',
+            'jobTitle'
+        ));
     }
 
     /**

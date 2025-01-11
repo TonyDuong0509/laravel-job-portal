@@ -60,4 +60,30 @@
                 }
             });
     });
+
+    $('.job-bookmark').on('click', function(event) {
+        event.preventDefault();
+        let id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            url: "{{ route('job.bookmark', ':id') }}".replace(':id', id),
+            data: {},
+            success: function(response) {
+                $('.job-bookmark').each(function() {
+                    let elementId = $(this).data('id');
+
+                    if (elementId == response.id) {
+                        $(this).find('i').addClass('fas fa-bookmark');
+                    }
+                });
+                notyf.success(response.message);
+            },
+            error: function(xhr, status, error) {
+                let errors = xhr.responseJSON.errors;
+                $.each(errors, function(indexInArray, valueOfElement) {
+                    notyf.error(valueOfElement[indexInArray]);
+                });
+            }
+        });
+    });
 </script>

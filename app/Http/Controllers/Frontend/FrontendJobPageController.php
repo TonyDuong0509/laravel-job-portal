@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppliedJob;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Job;
@@ -10,6 +11,9 @@ use App\Models\JobCategory;
 use App\Models\JobType;
 use App\Models\State;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class FrontendJobPageController extends Controller
@@ -74,6 +78,30 @@ class FrontendJobPageController extends Controller
     {
         $job = Job::where('slug', $slug)->firstOrFail();
         $openJobs = Job::where('company_id', $job->company->id)->where('status', 'active')->where('deadline', '>=', date('Y-m-d'))->count();
-        return view('frontend.pages.job-show', compact('job', 'openJobs'));
+        $alreadyAppliedJob = AppliedJob::where('job_id', $job->id)->where('candidate_id', Auth::user()->id)->exists();
+        return view('frontend.pages.job-show', compact(
+            'job',
+            'openJobs',
+            'alreadyAppliedJob',
+        ));
+    }
+
+    public function applyJob(string $id)
+    {
+        if (!Auth::check()) {
+            throw ValidationException::withMessages(['Please login for apply this job']);
+        }
+
+        $alreadyAppliedJob = AppliedJob::where('job_id', $id)->where('candidate_id', Auth::user()->id)->exists();
+        if ($alreadyAppliedJob) {
+            throw ValidationException::withMessages(['Sorry, you already applied this job! 💥']);
+        }
+
+        $applyJob = new AppliedJob();
+        $applyJob->job_id = $id;
+        $applyJob->candidate_id = Auth::user()->id;
+        $applyJob->save();
+
+        return response(['message' => 'Applied Successfully!'], 200);
     }
 }

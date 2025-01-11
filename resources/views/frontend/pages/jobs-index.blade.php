@@ -98,10 +98,22 @@
                                                             <span class="text-muted"></span>
                                                         </div>
                                                     @endif
+                                                    @php
+                                                        $bookmarkIds = \App\Models\JobBookmark::where(
+                                                            'candidate_id',
+                                                            auth()->user()->candidateProfile->id,
+                                                        )
+                                                            ->pluck('job_id')
+                                                            ->toArray();
+                                                    @endphp
                                                     <div class="col-lg-5 col-5 text-end">
-                                                        <div class="btn btn-apply-now bookmark-btn">
-                                                            <i class="far fa-bookmark"></i>
-                                                            {{-- <i class="fas fa-bookmark"></i> --}}
+                                                        <div class="btn btn-apply-now bookmark-btn job-bookmark"
+                                                            data-id="{{ $job->id }}">
+                                                            @if (in_array($job->id, $bookmarkIds))
+                                                                <i class="fas fa-bookmark"></i>
+                                                            @else
+                                                                <i class="far fa-bookmark"></i>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>

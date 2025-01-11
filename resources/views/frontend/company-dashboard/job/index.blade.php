@@ -56,7 +56,7 @@
                                     <tr>
                                         <th>Job</th>
                                         <th>Category/Role</th>
-                                        <th>Salary</th>
+                                        <th>Applications</th>
                                         <th>Deadline</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -67,48 +67,35 @@
                                                 <td>
                                                     <div>
                                                         <div>
-                                                            {{ $job->title }}
+                                                            {{ $job?->title }}
                                                             <br>
-                                                            <b>{{ $job->company->name }} - {{ $job->jobType->name }}</b>
+                                                            <b>{{ $job?->company->name }} - {{ $job?->jobType?->name }}</b>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <b>{{ $job->category?->name }}</b>
+                                                        <b>{{ $job?->category?->name }}</b>
                                                         <br>
-                                                        <span>{{ $job->jobRole->name }}</span>
+                                                        <span>{{ $job?->jobRole->name }}</span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    @if ($job->salary_mode === 'range')
-                                                        <b>
-                                                            {{ $job->min_salary }} -
-                                                            {{ $job->max_salary }}
-                                                            {{ config('settings.site_default_currency') }}
-                                                        </b>
-                                                        <br>
-                                                        <span>{{ $job->salaryType->name }}</span>
-                                                    @else
-                                                        <b>
-                                                            {{ $job->custom_salary }}
-                                                            {{ config('settings.site_default_currency') }}
-                                                        </b>
-                                                        <br>
-                                                        <span>{{ $job->salaryType->name }}</span>
-                                                    @endif
+                                                    {{ $job?->applications_count }} Applications
                                                 </td>
-                                                <td>{{ $job->deadline }}</td>
+                                                <td>{{ $job?->deadline }}</td>
                                                 <td>
-                                                    @if ($job->status === 'pending')
+                                                    @if ($job?->status === 'pending')
                                                         <span class="badge bg-warning text-light">Pending</span>
-                                                    @elseif ($job->deadline >= date('Y-m-d'))
+                                                    @elseif ($job?->deadline >= date('Y-m-d'))
                                                         <span class="badge bg-success text-light">Active</span>
                                                     @else
                                                         <span class="badge bg-danger text-light">Expired</span>
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    <a href="{{ route('company.job.applications', $job->id) }}"
+                                                        class="btn-sm text-primary">Applications</a>
                                                     <a href="{{ route('company.jobs.edit', $job->id) }}"
                                                         class="btn-sm text-warning">Edit</a>
                                                     <a href="{{ route('company.jobs.destroy', $job->id) }}"
