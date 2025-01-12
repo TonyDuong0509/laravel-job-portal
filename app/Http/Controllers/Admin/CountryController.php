@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Services\Notify;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CountryController extends Controller
 {
@@ -95,7 +96,7 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): Response
     {
         try {
             Country::findOrFail($id)->delete();

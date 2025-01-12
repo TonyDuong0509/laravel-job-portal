@@ -122,6 +122,13 @@
                 </a>
             </li>
 
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.blogs.*']) }}">
+                <a href="{{ route('admin.blogs.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Blogs</span>
+                </a>
+            </li>
+
             <li
                 class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i

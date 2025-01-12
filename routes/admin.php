@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
@@ -124,6 +125,9 @@ Route::group(
         // Job Route
         Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.change');
         Route::resource('jobs', JobController::class);
+
+        // Blog Route
+        Route::resource('blogs', BlogController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
