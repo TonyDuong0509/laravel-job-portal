@@ -207,6 +207,9 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link"
                             href="{{ route('admin.learn-more.index') }}">Learn More</a>
                     </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.counter.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.counter.index') }}">Counter</a>
+                    </li>
                 </ul>
             </li>
 
