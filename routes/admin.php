@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\WhyChooseUsController;
 use App\Http\Controllers\CityController;
 
 Route::group(
@@ -132,6 +133,9 @@ Route::group(
 
         // Hero Route
         Route::resource('hero', HeroController::class);
+
+        // WhyChooseUs Route
+        Route::resource('why-choose-us', WhyChooseUsController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
