@@ -15,7 +15,7 @@
 
     @include('frontend.home.sections.counter-section')
 
-    {{--    @include('frontend.home.sections.recruiters-section') --}}
+    @include('frontend.home.sections.recruiters-section')
 
     @include('frontend.home.sections.price-plan-section')
 
