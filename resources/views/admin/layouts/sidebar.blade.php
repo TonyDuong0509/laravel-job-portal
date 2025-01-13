@@ -210,6 +210,9 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.counter.*']) }}"><a class="nav-link"
                             href="{{ route('admin.counter.index') }}">Counter</a>
                     </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.job-location.index') }}">Job Location</a>
+                    </li>
                 </ul>
             </li>
 

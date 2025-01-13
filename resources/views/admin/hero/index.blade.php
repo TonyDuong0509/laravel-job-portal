@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <x-image-preview :height="200" :width="300" :source="$hero->image" />
+                                        <x-image-preview :height="200" :width="300" :source="$hero?->image" />
                                         <label for="">Image</label>
                                         <input type="file"
                                             class="form-control {{ \App\Helpers\hasError($errors, 'image') }}"
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <x-image-preview :height="200" :width="300" :source="$hero->background_image" />
+                                        <x-image-preview :height="200" :width="300" :source="$hero?->background_image" />
                                         <label for="">Background Image</label>
                                         <input type="file"
                                             class="form-control {{ \App\Helpers\hasError($errors, 'background_image') }}"
@@ -38,13 +38,13 @@
                             <div class="form-group">
                                 <label for="">Title</label>
                                 <input type="text" class="form-control {{ \App\Helpers\hasError($errors, 'title') }}"
-                                    value="{{ old('title', $hero->title) }}" name="title">
+                                    value="{{ old('title', $hero?->title) }}" name="title">
                                 <x-input-error :messages="$errors->get('title')" class="mt-2" />
                             </div>
                             <div class="form-group">
                                 <label for="">Sub Title</label>
                                 <input type="text" class="form-control {{ \App\Helpers\hasError($errors, 'sub_title') }}"
-                                    value="{{ old('sub_title', $hero->sub_title) }}" name="sub_title">
+                                    value="{{ old('sub_title', $hero?->sub_title) }}" name="sub_title">
                                 <x-input-error :messages="$errors->get('sub_title')" class="mt-2" />
                             </div>
                             <div class="form-group">

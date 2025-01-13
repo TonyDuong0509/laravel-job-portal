@@ -19,7 +19,7 @@
 
     @include('frontend.home.sections.price-plan-section')
 
-    {{--    @include('frontend.home.sections.job-by-location-section') --}}
+    @include('frontend.home.sections.job-by-location-section')
 
     {{--    @include('frontend.home.sections.review-section') --}}
 

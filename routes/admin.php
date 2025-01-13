@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
+use App\Http\Controllers\Admin\JobLocationController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -144,6 +145,9 @@ Route::group(
 
         // Counter Route
         Route::resource('counter', CounterController::class);
+
+        // Job Location Route
+        Route::resource('job-location', JobLocationController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
