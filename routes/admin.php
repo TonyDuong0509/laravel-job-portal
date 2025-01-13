@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
@@ -128,6 +129,9 @@ Route::group(
 
         // Blog Route
         Route::resource('blogs', BlogController::class);
+
+        // Hero Route
+        Route::resource('hero', HeroController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

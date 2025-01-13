@@ -211,7 +211,10 @@
                                             @foreach ($jobCategories as $jobCategory)
                                                 <li>
                                                     <label class="cb-container">
-                                                        <input @checked(request()->has('category') ? in_array($jobCategory->slug, request()->category) : false) type="checkbox"
+                                                        <input @checked(
+                                                            (request()->has('category') &&
+                                                                (is_array(request()->category) && in_array($jobCategory->slug, request()->category))) ||
+                                                                (is_string(request()->category) && $jobCategory->slug === request()->category)) type="checkbox"
                                                             value="{{ $jobCategory->slug }}" name="category[]" /><span
                                                             class="text-small">{{ $jobCategory->name }}</span><span
                                                             class="checkmark"></span></label><span

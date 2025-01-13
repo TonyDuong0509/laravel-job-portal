@@ -16,8 +16,8 @@ class FrontendBlogPageController extends Controller
     {
         $query = Blog::query();
         $this->search($query, ['title', 'slug']);
-        $blogs = $query->where('status', 1)->orderBy('id', 'DESC')->paginate(10);
-        $featured = Blog::where(['status' => 1, 'featured' => 1])->orderBy('id', 'DESC')->take(8)->get();
+        $blogs = $query->where('status', 1)->orderBy('id', 'DESC')->paginate(6);
+        $featured = Blog::where(['status' => 1, 'featured' => 1])->orderBy('id', 'DESC')->take(6)->get();
         return view('frontend.pages.blog-index', compact('blogs', 'featured'));
     }
 

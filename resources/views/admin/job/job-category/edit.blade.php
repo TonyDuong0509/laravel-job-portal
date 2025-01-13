@@ -31,6 +31,15 @@
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <div class="form-group">
+                                <label for="">Show At Popular</label>
+                                <select name="show_at_popular"
+                                    class="form-control {{ \App\Helpers\hasError($errors, 'show_at_popular') }}">
+                                    <option @selected($jobCategory->show_at_popular === 0) value="0">No</option>
+                                    <option @selected($jobCategory->show_at_popular === 1) value="1">Yes</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('show_at_popular')" class="mt-2" />
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>

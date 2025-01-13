@@ -34,6 +34,7 @@
                                     <th>Icon</th>
                                     <th>Name</th>
                                     <th>Slug</th>
+                                    <th>Show At Popular</th>
                                     <th>Action</th>
                                 </tr>
                                 <tbody>
@@ -47,6 +48,13 @@
                                             </td>
                                             <td>
                                                 {{ $jobCategory->slug }}
+                                            </td>
+                                            <td>
+                                                @if ($jobCategory->show_at_popular === 1)
+                                                    <span class="badge bg-success text-light">Active</span>
+                                                @else
+                                                    <span class="badge bg-danger text-light">Inactive</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{ route('admin.job-categories.edit', $jobCategory->id) }}"

@@ -122,15 +122,20 @@
                 </a>
             </li>
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.blogs.*']) }}">
-                <a href="{{ route('admin.blogs.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Blogs</span>
-                </a>
-            </li>
-
             <li
-                class="dropdown {{ \App\Helpers\setSidebarActive(['admin.industry-types.*', 'admin.organization-types.*']) }}">
+                class="dropdown {{ \App\Helpers\setSidebarActive([
+                    'admin.industry-types.*',
+                    'admin.organization-types.*',
+                    'admin.languages.*',
+                    'admin.professions.*',
+                    'admin.skills.*',
+                    'admin.educations.*',
+                    'admin.job-types.*',
+                    'admin.salary-types.*',
+                    'admin.tags.*',
+                    'admin.job-roles.*',
+                    'admin.job-experiences.*',
+                ]) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                         class="fas fa-columns"></i>
                     <span>Attributes</span></a>
@@ -189,23 +194,39 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="{{ route('admin.plans.index') }}"
-                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.plans']) }}">
+            <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                        class="fas fa-columns"></i> <span>Sections</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.hero.index') }}">Hero</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.blogs.*']) }}">
+                <a href="{{ route('admin.blogs.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Blogs</span>
+                </a>
+            </li>
+
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.plans.*']) }}">
+                <a href="{{ route('admin.plans.index') }}" class="nav-link">
                     <i class="far fa-square"></i>
                     <span>Price Plan</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('admin.payment-settings.index') }}"
-                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.payment-settings.index']) }}">
+
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.payment-settings.*']) }}">
+                <a href="{{ route('admin.payment-settings.index') }}" class="nav-link">
                     <i class="far fa-square"></i>
                     <span>Payment Setting</span>
                 </a>
             </li>
-            <li>
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.site-settings.*']) }}">
                 <a href="{{ route('admin.site-settings.index') }}"
-                    class="nav-link {{ \App\Helpers\setSidebarActive(['admin.site-settings.index']) }}">
+                    class="nav-link\">
                     <i class="far fa-square"></i>
                     <span>Site Setting</span>
                 </a>
