@@ -7,7 +7,7 @@
 
     @include('frontend.home.sections.category-section')
 
-    {{--    @include('frontend.home.sections.featured-job-section') --}}
+    @include('frontend.home.sections.featured-job-section')
 
     {{--    @include('frontend.home.sections.why-choose-us-section') --}}
 

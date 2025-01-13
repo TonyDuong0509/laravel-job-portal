@@ -83,7 +83,7 @@ class FrontendJobPageController extends Controller
     {
         $job = Job::where('slug', $slug)->firstOrFail();
         $openJobs = Job::where('company_id', $job->company->id)->where('status', 'active')->where('deadline', '>=', date('Y-m-d'))->count();
-        $alreadyAppliedJob = AppliedJob::where('job_id', $job->id)->where('candidate_id', Auth::user()->id)->exists();
+        $alreadyAppliedJob = AppliedJob::where('job_id', $job->id)->where('candidate_id', auth()?->user()?->id)->exists();
         return view('frontend.pages.job-show', compact(
             'job',
             'openJobs',
@@ -97,14 +97,14 @@ class FrontendJobPageController extends Controller
             throw ValidationException::withMessages(['Please login for apply this job']);
         }
 
-        $alreadyAppliedJob = AppliedJob::where('job_id', $id)->where('candidate_id', Auth::user()->id)->exists();
+        $alreadyAppliedJob = AppliedJob::where('job_id', $id)->where('candidate_id', auth()?->user()?->id)->exists();
         if ($alreadyAppliedJob) {
             throw ValidationException::withMessages(['Sorry, you already applied this job! 💥']);
         }
 
         $applyJob = new AppliedJob();
         $applyJob->job_id = $id;
-        $applyJob->candidate_id = Auth::user()->id;
+        $applyJob->candidate_id = auth()?->user()?->id;
         $applyJob->save();
 
         return response(['message' => 'Applied Successfully!'], 200);

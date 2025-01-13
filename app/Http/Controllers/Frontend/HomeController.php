@@ -20,8 +20,9 @@ class HomeController extends Controller
         $countries = Country::all();
         $jobCount = Job::count();
         $popularJobCategories = JobCategory::withCount(['jobs' => function ($subQuery) {
-            $subQuery->where('status', 'active')->where('deadline', '>=', date('Y-m-d'))->where('show_at_popular', 1);
+            $subQuery->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
         }])->where('show_at_popular', 1)->get();
+        $featuredJobCategories = JobCategory::where('show_at_featured', 1)->take(10)->get();
         $plans = Plan::where(['frontend_show' => 1, 'show_at_home' => 1])->get();
         return view('frontend.home.index', compact(
             'plans',
@@ -30,6 +31,7 @@ class HomeController extends Controller
             'countries',
             'jobCount',
             'popularJobCategories',
+            'featuredJobCategories',
         ));
     }
 }
