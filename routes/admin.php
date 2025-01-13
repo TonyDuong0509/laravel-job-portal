@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\JobExperienceController;
 use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LearnMoreController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PaypalSettingController;
@@ -136,6 +137,9 @@ Route::group(
 
         // WhyChooseUs Route
         Route::resource('why-choose-us', WhyChooseUsController::class);
+
+        // LearnMore Route
+        Route::resource('learn-more', LearnMoreController::class);
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

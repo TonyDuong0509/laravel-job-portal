@@ -11,7 +11,7 @@
 
     @include('frontend.home.sections.why-choose-us-section')
 
-    {{--    @include('frontend.home.sections.learn-more-section') --}}
+    @include('frontend.home.sections.learn-more-section')
 
     {{--    @include('frontend.home.sections.counter-section') --}}
 

@@ -204,6 +204,9 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link"
                             href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a>
                     </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.learn-more.index') }}">Learn More</a>
+                    </li>
                 </ul>
             </li>
 
