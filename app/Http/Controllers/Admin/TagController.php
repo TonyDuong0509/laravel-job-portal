@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\JobType;
 use App\Models\Tag;
 use App\Services\Notify;
 use App\Traits\Searchable;
@@ -93,6 +94,11 @@ class TagController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $jobTagExist = JobType::where('tag_id', $id)->exists();
+        if ($jobTagExist) {
+            return response(['message' => 'This item is already been used can\'t delete! 🚫'], 500);
+        }
+
         try {
             Tag::findOrFail($id)->delete();
             Notify::deletedNotification();

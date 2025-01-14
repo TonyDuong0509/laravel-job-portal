@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\OrganizationType;
 use App\Services\Notify;
 use Illuminate\Http\Request;
@@ -93,6 +94,11 @@ class OrganizationTypeController extends Controller
      */
     public function destroy(string $id)
     {
+        $company = Company::where('organization_type_id', $id)->exists();
+        if ($company) {
+            return response(['message' => 'This item is already been used can\'t delete! 🚫'], 500);
+        }
+
         try {
             OrganizationType::findOrFail($id)->delete();
             Notify::deletedNotification();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CandidateExperienceStoreRequest;
+use App\Models\Candidate;
 use App\Models\CandidateExperience;
 use Exception;
 use Illuminate\Http\Request;
@@ -93,6 +94,11 @@ class CandidateExperienceController extends Controller
      */
     public function destroy(string $id): Response
     {
+        $candidateExist = Candidate::where('experience_id', $id)->exists();
+        if ($candidateExist) {
+            return response(['message' => 'This item is already been used can\'t delete! 🚫'], 500);
+        }
+
         try {
             CandidateExperience::findOrFail($id)->delete();
             return response(['message' => 'Deleted Successfully'], 200);
