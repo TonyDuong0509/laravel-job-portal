@@ -8,8 +8,6 @@
             <li><a class="btn btn-border mb-20" href="{{ route('candidate.bookmarked-jobs.index') }}">Bookmarks Jobs</a>
             </li>
             <li><a class="btn btn-border mb-20" href="{{ route('candidate.applied-jobs.index') }}">Applied Jobs</a></li>
-            <li><a class="btn btn-border mb-20" href="candidate-profile-save-jobs.html">Saved Jobs</a>
-            </li>
             <li>
                 <form method="POST"
                     action="{{ Auth::guard('admin')->check() ? route('admin.logout') : route('logout') }}">

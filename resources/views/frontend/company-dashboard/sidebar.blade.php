@@ -11,9 +11,6 @@
                     href="{{ route('company.profile') }}">My Profile</a></li>
             <li><a class="btn btn-border mb-20" href="">My
                     Jobs</a></li>
-            <li><a class="btn btn-border mb-20" href="">Saved
-                    Jobs</a>
-            </li>
             <li>
                 <form method="POST"
                     action="{{ Auth::guard('admin')->check() ? route('admin.logout') : route('logout') }}">

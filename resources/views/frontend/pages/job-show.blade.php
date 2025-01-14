@@ -141,7 +141,7 @@
                     <div class="author-single"><span>{{ $job->company->name }}</span></div>
                     <div class="single-apply-jobs">
                         <div class="row align-items-center">
-                            <div class="col-md-5"><a class="btn btn-border" href="#">Save job</a></div>
+                            <div class="col-md-5"></div>
                             <div class="col-md-7 text-lg-end social-share">
                                 <h6 class="color-text-paragraph-2 d-inline-block d-baseline mr-10">Share this</h6>
                                 <a data-social="facebook" class="mr-5 d-inline-block d-middle" href="#"><img

@@ -9,7 +9,7 @@
                         <h2 class="mb-20">Dashboard</h2>
                         <ul class="breadcrumbs">
                             <li><a class="home-icon" href="{{ url('/') }}">Home</a></li>
-                            <li>Dashboard</li>
+                            <li>Candidate Dashboard</li>
                         </ul>
                     </div>
                 </div>
@@ -30,19 +30,13 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-info-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $jobAppliedCount }} <span>Job applied</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-danger-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="dash_overview_item bg-warning-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $userBookmarksCount }} <span>Job Bookmark</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
