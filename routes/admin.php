@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\StateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\CustomPageBuilderController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\JobCategoryController;
@@ -152,6 +153,9 @@ Route::group(
 
         // Review Section Route
         Route::resource('reviews', ReviewController::class);
+
+        // Custom Page Builder Route
+        Route::resource('page-builder', CustomPageBuilderController::class);
 
         //
 

@@ -246,6 +246,13 @@
                     <span>Site Setting</span>
                 </a>
             </li>
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.page-builder.*']) }}">
+                <a href="{{ route('admin.page-builder.index') }}"
+                    class="nav-link\">
+                    <i class="far fa-square"></i>
+                    <span>Page Builder</span>
+                </a>
+            </li>
         </ul>
     </aside>
 </div>
