@@ -233,6 +233,13 @@
                 </a>
             </li>
 
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.newsletter.index']) }}">
+                <a href="{{ route('admin.newsletter.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Subscribers</span>
+                </a>
+            </li>
+
             <li class="{{ \App\Helpers\setSidebarActive(['admin.payment-settings.*']) }}">
                 <a href="{{ route('admin.payment-settings.index') }}" class="nav-link">
                     <i class="far fa-square"></i>

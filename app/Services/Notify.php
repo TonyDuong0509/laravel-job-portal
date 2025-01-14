@@ -24,4 +24,9 @@ class Notify
     {
         return notyf()->addError($error, '🚫 Error !');
     }
+
+    public static function successNotifycation(string $message)
+    {
+        return notyf()->addSuccess($message, '👍 Success !');
+    }
 }

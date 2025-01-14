@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\FrontendJobPageController;
 use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\LocationController;
+use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Frontend\PricingPageController;
 
 /*
@@ -141,3 +142,6 @@ Route::get('blogs/{slug}', [FrontendBlogPageController::class, 'show'])->name('b
 // Contact Route
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail');
+
+// Subscribe Route
+Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
