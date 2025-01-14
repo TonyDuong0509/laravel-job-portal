@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="footer-col-1 col-md-3 col-sm-12">
-                <a class="footer_logo" href="index.html">
+                <a class="footer_logo" href="{{ url('/') }}">
                     <img alt="joblist" src="{{ asset('frontend/assets/imgs/template/logo_2.png') }}">
                 </a>
                 <div class="mt-20 mb-20 font-xs color-text-paragraph-2">joblist is the heart of the design community and
@@ -35,9 +35,12 @@
                     best resource to discover and connect with designers and jobs worldwide.
                 </div>
                 <div class="footer-social">
-                    <a class="icon-socials icon-facebook" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="icon-socials icon-twitter" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="icon-socials icon-linkedin" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="icon-socials icon-facebook" href="https://www.facebook.com/duonganh.hao.96"
+                        target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="icon-socials icon-linkedin" href="https://www.instagram.com/_francis.duong/"
+                        target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="icon-socials icon-twitter" href="https://x.com/DngAnhHo7" target="_blank"><i
+                            class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-col-2 col-md-2 col-xs-6">

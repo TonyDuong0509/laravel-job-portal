@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\JobRoleController;
 use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LearnMoreController;
+use App\Http\Controllers\Admin\MenuBuilderController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
@@ -157,6 +158,9 @@ Route::group(
 
         // Custom Page Builder Route
         Route::resource('page-builder', CustomPageBuilderController::class);
+
+        // Menu Builder Route
+        Route::resource('menu-builder', MenuBuilderController::class);
 
         // Subscriber Route
         Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');

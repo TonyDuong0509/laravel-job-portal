@@ -236,7 +236,14 @@
             <li class="{{ \App\Helpers\setSidebarActive(['admin.newsletter.index']) }}">
                 <a href="{{ route('admin.newsletter.index') }}" class="nav-link">
                     <i class="far fa-square"></i>
-                    <span>Subscribers</span>
+                    <span>Newsletter & Subscriber</span>
+                </a>
+            </li>
+
+            <li class="{{ \App\Helpers\setSidebarActive(['admin.menu-builder.index']) }}">
+                <a href="{{ route('admin.menu-builder.index') }}" class="nav-link">
+                    <i class="far fa-square"></i>
+                    <span>Menu Builder</span>
                 </a>
             </li>
 
