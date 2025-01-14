@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PaypalSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TagController;
@@ -148,6 +149,11 @@ Route::group(
 
         // Job Location Route
         Route::resource('job-location', JobLocationController::class);
+
+        // Review Section Route
+        Route::resource('reviews', ReviewController::class);
+
+        //
 
         // Payment Setting Route
         Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

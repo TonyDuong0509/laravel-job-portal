@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Company;
 use App\Models\Counter;
 use App\Models\Country;
@@ -12,6 +13,7 @@ use App\Models\JobCategory;
 use App\Models\JobLocation;
 use App\Models\LearnMore;
 use App\Models\Plan;
+use App\Models\Review;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -34,7 +36,9 @@ class HomeController extends Controller
         $companies = Company::select('logo', 'name', 'slug', 'country')->withCount(['jobs' => function ($subQuery) {
             $subQuery->where('status', 'active')->where('deadline', '>=', date('Y-m-d'));
         }])->where(['profile_completion' => 1, 'visibility' => 1])->latest()->take(45)->get();
-        $jobLocations = JobLocation::all();
+        $jobLocations = JobLocation::latest()->take(8)->get();
+        $reviews = Review::latest()->take(8)->get();
+        $blogs = Blog::latest()->take(6)->get();
         $plans = Plan::where(['frontend_show' => 1, 'show_at_home' => 1])->get();
         return view('frontend.home.index', compact(
             'plans',
@@ -49,6 +53,8 @@ class HomeController extends Controller
             'counter',
             'companies',
             'jobLocations',
+            'reviews',
+            'blogs',
         ));
     }
 }

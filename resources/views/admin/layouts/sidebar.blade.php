@@ -213,6 +213,9 @@
                     <li class="{{ \App\Helpers\setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
                             href="{{ route('admin.job-location.index') }}">Job Location</a>
                     </li>
+                    <li class="{{ \App\Helpers\setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.reviews.index') }}">Review</a>
+                    </li>
                 </ul>
             </li>
 
