@@ -17,6 +17,7 @@ class GeneralSettingUpdateRequest extends FormRequest
             'site_name' => ['required', 'max:255'],
             'site_email' => ['required', 'max:255', 'email'],
             'site_phone' => ['required', 'max:255'],
+            'site_map' => ['nullable'],
             'site_default_currency' => ['required'],
             'site_currency_icon' => ['required']
         ];

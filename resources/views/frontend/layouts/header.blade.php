@@ -21,6 +21,8 @@
                                 href="{{ route('candidates.index') }}">Candidates</a></li>
                         <li class="has-children"><a class="{{ \App\Helpers\setSidebarActive(['blogs.index']) }}"
                                 href="{{ route('blogs.index') }}">Blog</a></li>
+                        <li class="has-children"><a class="{{ \App\Helpers\setSidebarActive(['contact.index']) }}"
+                                href="{{ route('contact.index') }}">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span
