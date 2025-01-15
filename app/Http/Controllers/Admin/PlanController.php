@@ -14,6 +14,11 @@ use Illuminate\View\View;
 
 class PlanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:price plan']);
+    }
+
     /**
      * Display a listing of the resource.
      */

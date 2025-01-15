@@ -13,6 +13,11 @@ use Illuminate\View\View;
 
 class SiteSettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:site settings']);
+    }
+
     public function index(): View
     {
         return view('admin.site-setting.index');

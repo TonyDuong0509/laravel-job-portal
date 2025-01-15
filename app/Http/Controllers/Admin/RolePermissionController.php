@@ -3,24 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Candidate;
-use App\Models\Job;
-use App\Models\JobExperience;
 use App\Services\Notify;
-use App\Traits\Searchable;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
-class JobExperienceController extends Controller
+class RolePermissionController extends Controller
 {
-    use Searchable;
-
     public function __construct()
     {
-        $this->middleware(['permission:job attributes']);
+        $this->middleware(['permission:access management']);
     }
 
     /**
@@ -28,10 +24,8 @@ class JobExperienceController extends Controller
      */
     public function index(): View
     {
-        $query = JobExperience::query();
-        $this->search($query, ['name', 'slug']);
-        $jobExperiences = $query->orderBy('id', 'DESC')->paginate(20);
-        return view('admin.job.job-experience.index', compact('jobExperiences'));
+        $roles = Role::all();
+        return view('admin.access-management.role.index', compact('roles'));
     }
 
     /**
@@ -39,7 +33,8 @@ class JobExperienceController extends Controller
      */
     public function create(): View
     {
-        return view('admin.job.job-experience.create');
+        $permissions = Permission::all()->groupBy('group');
+        return view('admin.access-management.role.create', compact('permissions'));
     }
 
     /**
@@ -49,33 +44,37 @@ class JobExperienceController extends Controller
     {
         $request->validate(
             [
-                'name' => ['required', 'max:255']
+                'name' => ['required', 'max:50', 'unique:roles,name'],
             ]
         );
 
-        $experience = new JobExperience();
-        $experience->name = $request->name;
-        $experience->save();
+        // Create Role
+        $role = Role::create(['guard_name' => 'admin', 'name' => $request->name]);
+
+        // Assign permissions to the role
+        $role->syncPermissions($request->permissions);
 
         Notify::createdNotification();
-        return redirect()->route('admin.job-experiences.index');
+
+        return to_route('admin.role.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id): View
     {
-        $jobExperience = JobExperience::findOrFail($id);
-        return view('admin.job.job-experience.edit', compact('jobExperience'));
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all()->groupBy('group');
+        $rolePermissions = $role->permissions;
+        $rolePermissions = $rolePermissions->pluck('name')->toArray();
+
+        return view('admin.access-management.role.edit', compact('permissions', 'role', 'rolePermissions'));
     }
 
     /**
@@ -85,14 +84,20 @@ class JobExperienceController extends Controller
     {
         $request->validate(
             [
-                'name' => ['required', 'max:255']
+                'name' => ['required', 'max:50', 'unique:roles,name,' . $id],
             ]
         );
-        $experience = JobExperience::findOrFail($id);
-        $experience->name = $request->name;
-        $experience->save();
+
+        // Create Role
+        $role = Role::findOrFail($id);
+        $role->update(['guard_name' => 'admin', 'name' => $request->name]);
+
+        // Assign permissions to the role
+        $role->syncPermissions($request->permissions);
+
         Notify::updatedNotification();
-        return redirect()->back();
+
+        return to_route('admin.role.index');
     }
 
     /**
@@ -100,15 +105,8 @@ class JobExperienceController extends Controller
      */
     public function destroy(string $id): Response
     {
-        $jobExist = Job::where('job_experience_id', $id)->exists();
-        $candidateExist = Candidate::where('experience_id', $id)->exists();
-
-        if ($jobExist || $candidateExist) {
-            return response(['message' => 'This item is already been used can\'t d elete! 🚫'], 500);
-        }
-
         try {
-            JobExperience::findOrFail($id)->delete();
+            Role::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         } catch (Exception $e) {

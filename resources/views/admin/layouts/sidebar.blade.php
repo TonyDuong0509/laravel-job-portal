@@ -99,174 +99,235 @@
                 <a href="{{ route('admin.dashboard') }}" class="nav-link"><i
                         class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
+
             <li class="menu-header">Starter</li>
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.orders.*']) }}">
-                <a href="{{ route('admin.orders.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Orders</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['order index']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.orders.*']) }}">
+                    <a href="{{ route('admin.orders.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.job-categories.*']) }}">
-                <a href="{{ route('admin.job-categories.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Job Category</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['job category create', 'job category update', 'job category delete']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.job-categories.*']) }}">
+                    <a href="{{ route('admin.job-categories.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Job Category</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.jobs.*']) }}">
-                <a href="{{ route('admin.jobs.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Job Post</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['job create', 'job update', 'job delete']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.jobs.*']) }}">
+                    <a href="{{ route('admin.jobs.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Job Post</span>
+                    </a>
+                </li>
+            @endif
 
-            <li
-                class="dropdown {{ \App\Helpers\setSidebarActive([
-                    'admin.industry-types.*',
-                    'admin.organization-types.*',
-                    'admin.languages.*',
-                    'admin.professions.*',
-                    'admin.skills.*',
-                    'admin.educations.*',
-                    'admin.job-types.*',
-                    'admin.salary-types.*',
-                    'admin.tags.*',
-                    'admin.job-roles.*',
-                    'admin.job-experiences.*',
-                ]) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fas fa-columns"></i>
-                    <span>Attributes</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.industry-types.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.industry-types.index') }}">Industry
-                            Type</a></li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.organization-types.*']) }}"><a
-                            class="nav-link" href="{{ route('admin.organization-types.index') }}">Organization
-                            Type</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.languages.index') }}">Languages</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.professions.index') }}">Professions</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.skills.index') }}">Skills</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.educations.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.educations.index') }}">Educations</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-types.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.job-types.index') }}">Job Types</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.salary-types.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.salary-types.index') }}">Salary Types</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.tags.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.tags.index') }}">Tags</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-roles.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.job-roles.index') }}">Job Roles</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-experiences.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.job-experiences.index') }}">Job Experiences</a>
-                    </li>
-                </ul>
-            </li>
+            @if (App\Helpers\canAccess(['job role']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.job-roles.*']) }}">
+                    <a href="{{ route('admin.job-roles.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Job Roles</span>
+                    </a>
+                </li>
+            @endif
 
-            <li
-                class="dropdown {{ \App\Helpers\setSidebarActive(['admin.countries.*', 'admin.states.*', 'admin.cities.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fas fa-columns"></i> <span>Locations</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.countries.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.countries.index') }}">Countries</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.states.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.states.index') }}">States</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.cities.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.cities.index') }}">Cities</a>
-                    </li>
-                </ul>
-            </li>
+            @if (App\Helpers\canAccess(['job attributes']))
+                <li
+                    class="dropdown {{ \App\Helpers\setSidebarActive([
+                        'admin.industry-types.*',
+                        'admin.organization-types.*',
+                        'admin.languages.*',
+                        'admin.professions.*',
+                        'admin.skills.*',
+                        'admin.educations.*',
+                        'admin.job-types.*',
+                        'admin.salary-types.*',
+                        'admin.tags.*',
+                        'admin.job-experiences.*',
+                    ]) }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-columns"></i>
+                        <span>Attributes</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.industry-types.*']) }}"><a
+                                class="nav-link" href="{{ route('admin.industry-types.index') }}">Industry
+                                Type</a></li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.organization-types.*']) }}"><a
+                                class="nav-link" href="{{ route('admin.organization-types.index') }}">Organization
+                                Type</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.languages.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.languages.index') }}">Languages</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.professions.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.professions.index') }}">Professions</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.skills.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.skills.index') }}">Skills</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.educations.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.educations.index') }}">Educations</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.job-types.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.job-types.index') }}">Job Types</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.salary-types.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.salary-types.index') }}">Salary Types</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.tags.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.tags.index') }}">Tags</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.job-experiences.*']) }}"><a
+                                class="nav-link" href="{{ route('admin.job-experiences.index') }}">Job
+                                Experiences</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
 
-            <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
-                        class="fas fa-columns"></i> <span>Sections</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.hero.index') }}">Hero</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.why-choose-us.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.learn-more.index') }}">Learn More</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.counter.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.counter.index') }}">Counter</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.job-location.index') }}">Job Location</a>
-                    </li>
-                    <li class="{{ \App\Helpers\setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.reviews.index') }}">Review</a>
-                    </li>
-                </ul>
-            </li>
+            @if (App\Helpers\canAccess(['job locations']))
+                <li
+                    class="dropdown {{ \App\Helpers\setSidebarActive(['admin.countries.*', 'admin.states.*', 'admin.cities.*']) }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-columns"></i> <span>Locations</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.countries.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.countries.index') }}">Countries</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.states.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.states.index') }}">States</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.cities.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.cities.index') }}">Cities</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.blogs.*']) }}">
-                <a href="{{ route('admin.blogs.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Blogs</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['sections']))
+                <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-columns"></i> <span>Sections</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.hero.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.hero.index') }}">Hero</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.why-choose-us.*']) }}"><a
+                                class="nav-link" href="{{ route('admin.why-choose-us.index') }}">Why Choose Us</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.learn-more.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.learn-more.index') }}">Learn More</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.counter.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.counter.index') }}">Counter</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.job-location.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.job-location.index') }}">Job Location</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.reviews.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.reviews.index') }}">Review</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.plans.*']) }}">
-                <a href="{{ route('admin.plans.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Price Plan</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['blogs']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.blogs.*']) }}">
+                    <a href="{{ route('admin.blogs.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Blogs</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.newsletter.index']) }}">
-                <a href="{{ route('admin.newsletter.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Newsletter & Subscriber</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['price plan']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.plans.*']) }}">
+                    <a href="{{ route('admin.plans.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Price Plan</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.menu-builder.index']) }}">
-                <a href="{{ route('admin.menu-builder.index') }}" class="nav-link">
-                    <i class="far fa-square"></i>
-                    <span>Menu Builder</span>
-                </a>
-            </li>
+            @if (App\Helpers\canAccess(['news letter']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.newsletter.index']) }}">
+                    <a href="{{ route('admin.newsletter.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Newsletter & Subscriber</span>
+                    </a>
+                </li>
+            @endif
 
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.payment-settings.*']) }}">
-                <a href="{{ route('admin.payment-settings.index') }}" class="nav-link">
+            @if (App\Helpers\canAccess(['site pages']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.page-builder.*']) }}">
+                    <a href="{{ route('admin.page-builder.index') }}"
+                        class="nav-link\">
                     <i class="far fa-square"></i>
-                    <span>Payment Setting</span>
-                </a>
-            </li>
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.site-settings.*']) }}">
-                <a href="{{ route('admin.site-settings.index') }}"
-                    class="nav-link\">
+                        <span>Page Builder</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (App\Helpers\canAccess(['menu builder']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.menu-builder.index']) }}">
+                    <a href="{{ route('admin.menu-builder.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Menu Builder</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (App\Helpers\canAccess(['access management']))
+                <li class="dropdown {{ \App\Helpers\setSidebarActive(['admin.role.*', 'admin.role-user.*']) }}">
+                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                            class="fas fa-columns"></i> <span>Access Management</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.role.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.role.index') }}">Roles</a>
+                        </li>
+                        <li class="{{ \App\Helpers\setSidebarActive(['admin.role-user.*']) }}"><a class="nav-link"
+                                href="{{ route('admin.role-user.index') }}">Role Users</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+
+            @if (App\Helpers\canAccess(['payment settings']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.payment-settings.*']) }}">
+                    <a href="{{ route('admin.payment-settings.index') }}" class="nav-link">
+                        <i class="far fa-square"></i>
+                        <span>Payment Setting</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (App\Helpers\canAccess(['site settings']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.site-settings.*']) }}">
+                    <a href="{{ route('admin.site-settings.index') }}"
+                        class="nav-link\">
                     <i class="far fa-square"></i>
-                    <span>Site Setting</span>
-                </a>
-            </li>
-            <li class="{{ \App\Helpers\setSidebarActive(['admin.page-builder.*']) }}">
-                <a href="{{ route('admin.page-builder.index') }}"
-                    class="nav-link\">
+                        <span>Site Setting</span>
+                    </a>
+                </li>
+            @endif
+
+            @if (App\Helpers\canAccess(['database clear']))
+                <li class="{{ \App\Helpers\setSidebarActive(['admin.clear-database.*']) }}">
+                    <a href="{{ route('admin.clear-database.index') }}"
+                        class="nav-link\">
                     <i class="far fa-square"></i>
-                    <span>Page Builder</span>
-                </a>
-            </li>
+                        <span>Clear Database</span>
+                    </a>
+                </li>
+            @endif
+
         </ul>
     </aside>
 </div>

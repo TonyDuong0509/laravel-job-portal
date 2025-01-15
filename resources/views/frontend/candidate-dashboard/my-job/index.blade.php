@@ -25,7 +25,7 @@
 
                 <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
                     <div class="d-flex justify-content-between">
-                        <h4>Applied Jobs (100)</h4>
+                        <h4>Applied Jobs ({{ $appliedJobs->count() }})</h4>
                     </div>
 
                     <table class="table table-striped">

@@ -14,6 +14,11 @@ class HeroController extends Controller
 {
     use FileUploadTrait;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+
     /**
      * Display a listing of the resource.
      */

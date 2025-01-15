@@ -18,6 +18,11 @@ class NewsletterController extends Controller
 {
     use Searchable;
 
+    public function __construct()
+    {
+        $this->middleware(['permission:news letter']);
+    }
+
     public function index(): View
     {
         $query = Subscribers::query();

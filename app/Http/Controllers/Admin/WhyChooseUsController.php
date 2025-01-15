@@ -11,6 +11,11 @@ use Illuminate\View\View;
 
 class WhyChooseUsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:sections']);
+    }
+
     /**
      * Display a listing of the resource.
      */

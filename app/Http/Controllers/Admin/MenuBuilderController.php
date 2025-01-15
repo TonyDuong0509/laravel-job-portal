@@ -8,6 +8,11 @@ use Illuminate\View\View;
 
 class MenuBuilderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:menu builder']);
+    }
+
     /**
      * Display a listing of the resource.
      */

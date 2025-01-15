@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ClearDatabaseController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LocationController;
@@ -32,6 +33,8 @@ use App\Http\Controllers\Admin\PaypalSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\RoleUserController;
 use App\Http\Controllers\Admin\SalaryTypeController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\TagController;
@@ -162,6 +165,12 @@ Route::group(
         // Menu Builder Route
         Route::resource('menu-builder', MenuBuilderController::class);
 
+        // Role & Permission Route
+        Route::resource('role', RolePermissionController::class);
+
+        // Role User Route
+        Route::resource('role-user', RoleUserController::class);
+
         // Subscriber Route
         Route::get('newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
         Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
@@ -176,5 +185,8 @@ Route::group(
         // Site Settings Route
         Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
         Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+
+        Route::get('clear-database', [ClearDatabaseController::class, 'index'])->name('clear-database.index');
+        Route::post('clear-database', [ClearDatabaseController::class, 'clearDatabase'])->name('clear-database');
     }
 );

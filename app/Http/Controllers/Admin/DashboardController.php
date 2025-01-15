@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $totalJobs = Job::count();
         $activeJobs = Job::where('deadline', '>=', date('Y-m-d'))->count();
         $expiredJobs = Job::where('deadline', '<=', date('Y-m-d'))->count();
-        $pendingJobs = Job::where('status', 'pending')->count();
+        $pendingJobs = Job::where('status', 'pending')->latest()->take(10)->get();
         $totalBlogs = Blog::count();
         $totalSubscribers = Subscribers::count();
         return view('admin.dashboard.index', compact(
