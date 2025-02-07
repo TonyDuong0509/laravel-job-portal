@@ -14,7 +14,7 @@ class CandidateJobBookmarkController extends Controller
 {
     public function index(): View
     {
-        $bookmarks = JobBookmark::where('candidate_id', Auth::user()->candidateProfile->id)->paginate(10);
+        $bookmarks = JobBookmark::where('candidate_id', Auth::user()->candidateProfile?->id)->paginate(10);
         return view('frontend.candidate-dashboard.bookmarks.index', compact('bookmarks'));
     }
 

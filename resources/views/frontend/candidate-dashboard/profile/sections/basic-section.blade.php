@@ -3,7 +3,7 @@
         @csrf
         <div class="row">
             <div class="col-md-3">
-                <x-image-preview :height="200" :width="200" :source="$candidate->image" />
+                <x-image-preview :height="200" :width="200" :source="$candidate?->image" />
                 <div class="form-group">
                     <label class="font-sm color-text-mutted mb-10">Profile Picture *</label>
                     <input class="form-control {{ $errors->has('profile_picture') ? 'is-invalid' : '' }}" type="file"

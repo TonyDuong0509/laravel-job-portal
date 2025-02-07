@@ -137,6 +137,8 @@ Route::group(
         // Job Route
         Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.change');
         Route::resource('jobs', JobController::class);
+        Route::delete('job-force-delete/{id}', [JobController::class, 'forceDelete'])->name('job-force-delete');
+        Route::post('job-restore/{id}', [JobController::class, 'restoreDelete'])->name('job-restore');
 
         // Blog Route
         Route::resource('blogs', BlogController::class);

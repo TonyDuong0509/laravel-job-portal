@@ -49,7 +49,8 @@ class JobController extends Controller
         $query = Job::query();
         $this->search($query, ['title', 'slug']);
         $jobs = $query->orderBy('id', 'DESC')->paginate(20);
-        return view('admin.job.index', compact('jobs'));
+        $trashJobs = $query->onlyTrashed()->orderBy('id', 'DESC')->paginate(20);
+        return view('admin.job.index', compact('jobs', 'trashJobs'));
     }
 
     /**
@@ -267,6 +268,26 @@ class JobController extends Controller
             logger($e);
             return response(['message' => 'Something went wrong, please try again !']);
         }
+    }
+
+    public function forceDelete(string $id): Response
+    {
+        try {
+            Job::onlyTrashed()->findOrFail($id)->forceDelete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+        } catch (Exception $e) {
+            logger($e);
+            return response(['message' => 'Something went wrong, please try again !']);
+        }
+    }
+
+    public function restoreDelete(string $id)
+    {
+        $job = Job::onlyTrashed()->findOrFail($id); // Lấy bản ghi đã bị soft delete
+        $job->restore(); // Khôi phục bản ghi
+        Notify::successNotifycation('Restore job successfully');
+        return redirect()->back();
     }
 
     public function changeStatus(string $id): Response
