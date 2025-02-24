@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\FrontendBlogPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\FrontendJobPageController;
+use App\Http\Controllers\Frontend\GoogleController;
 use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\NewsletterController;
@@ -145,3 +146,7 @@ Route::post('contact', [ContactController::class, 'sendMail'])->name('send-mail'
 
 // Subscribe Route
 Route::post('newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
+
+// Login Google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('redirect.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallBack']);

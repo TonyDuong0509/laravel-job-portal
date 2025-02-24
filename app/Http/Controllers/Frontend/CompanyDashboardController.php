@@ -12,9 +12,9 @@ class CompanyDashboardController extends Controller
 {
     public function index(): View
     {
-        $jobPosts = Job::where('company_id', auth()->user()->company->id)->where('status', 'pending')->count();
-        $totalJobs = Job::where('company_id', auth()->user()->company->id)->count();
-        $totalOrders = Order::where('company_id', auth()->user()->company->id)->count();
+        $jobPosts = Job::where('company_id', auth()->user()->company?->id)->where('status', 'pending')->count();
+        $totalJobs = Job::where('company_id', auth()->user()->company?->id)->count();
+        $totalOrders = Order::where('company_id', auth()->user()->company?->id)->count();
         return view('frontend.company-dashboard.dashboard', compact(
             'jobPosts',
             'totalJobs',

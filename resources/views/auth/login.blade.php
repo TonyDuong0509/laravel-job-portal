@@ -104,9 +104,9 @@
                         </form>
                         <div class="text-center mt-20">
                             <div class="divider-text-center"><span>Or continue with</span></div>
-                            <button class="btn social-login hover-up mt-20"><img
+                            <a href="{{ route('redirect.google') }}" class="btn social-login hover-up mt-20"><img
                                     src="{{ asset('frontend/assets/imgs/template/icons/icon-google.svg') }}"
-                                    alt="joblist"><strong>Sign up with Google</strong></button>
+                                    alt="joblist"><strong>Sign up with Google</strong></a>
                         </div>
                     </div>
                 </div>
